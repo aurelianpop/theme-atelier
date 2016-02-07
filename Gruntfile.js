@@ -98,7 +98,8 @@ module.exports = function (grunt) {
         sass: {
             main: {
                 files: {
-                    'css/styles.css': 'css/sass/styles.scss'
+                    'css/styles.css': 'css/sass/styles.scss',
+                    'css/main.css': 'css/sass/main.scss'
                 }
             }
         }
