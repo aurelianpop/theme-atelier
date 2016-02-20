@@ -1,0 +1,39 @@
+.ta-table-logo {
+  .custom-img-container {
+    max-width: 200px;
+  }
+}
+
+.ta-children-list {
+  list-style-type: none;
+  .remove-child {
+    text-decoration: none;
+  }
+}
+
+.ta-table-children {
+  td {
+    position: relative;
+  }
+
+  .child-search-results {
+    position: absolute;
+    top: 29px;
+    background: #ffffff;
+    width: 348px;
+    margin-bottom: 0;
+    margin-left: 1px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    li {
+      margin-bottom: 0;
+    }
+    a {
+      display: block;
+      padding: 7px 15px;
+      border-bottom: 1px solid #ddd;
+      width: 318px;
+      text-decoration: none;
+    }
+  }
+}

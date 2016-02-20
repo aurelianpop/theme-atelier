@@ -64,6 +64,12 @@ module.exports = function (grunt) {
                     'js/skip-link-focus-fix.js'
                 ],
                 dest: 'js/dist/ta-main.js'
+            },
+            admin: {
+                src: [
+                    'admin/js/admin-main.js'
+                ],
+                dest: 'admin/js/dist/admin.js'
             }
         },
         uglify: {
@@ -73,12 +79,13 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     'js/dist/ta-main.min.js': ['js/dist/ta-main.js'],
+                    'admin/js/dist/admin.min.js': ['admin/js/dist/admin.js']
                 }
             }
         },
         watch: {
             js: {
-                files: ['js/materialize/*.js', 'js/main.js', 'js/customizer.js', 'js/navigation.js', 'js/skip-link-focus-fix.js'],
+                files: ['js/materialize/*.js', 'js/main.js', 'admin/js/admin-main.js', 'js/customizer.js', 'js/navigation.js', 'js/skip-link-focus-fix.js'],
                 tasks: ['js_compile'],
                 options: {
                     spawn: false,
@@ -86,7 +93,10 @@ module.exports = function (grunt) {
                 }
             },
             sass: {
-                files: ['css/**/*.scss'],
+                files: [
+                    'css/**/*.scss',
+                    'admin/css/**/*.scss'
+                ],
                 tasks: ['sass:main'],
                 options: {
                     interrupt: false,
@@ -99,6 +109,7 @@ module.exports = function (grunt) {
             main: {
                 files: {
                     'css/styles.css': 'css/sass/styles.scss',
+                    'admin/css/admin.css': 'admin/css/sass/admin.scss',
                     'css/main.css': 'css/sass/main.scss'
                 }
             }
@@ -110,7 +121,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('js_compile', ['concat:dist', 'uglify:dist']);
+    grunt.registerTask('js_compile', ['concat:dist', 'concat:admin', 'uglify:dist']);
 
     grunt.registerTask('build_all', ['js_compile', 'sass:main']);
 
