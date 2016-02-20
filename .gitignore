@@ -2,4 +2,6 @@
 /node_modules
 /css/.sass-cache
 /css/*.css
+admin/css/*.css
+/admin/js/dist/*.js
 /js/dist/*.js
