@@ -96,26 +96,6 @@ function theme_atelier_content_width()
 add_action('after_setup_theme', 'theme_atelier_content_width', 0);
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function theme_atelier_widgets_init()
-{
-    register_sidebar(array(
-        'name' => esc_html__('Sidebar', 'theme-atelier'),
-        'id' => 'sidebar-1',
-        'description' => '',
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget' => '</section>',
-        'before_title' => '<h2 class="widget-title">',
-        'after_title' => '</h2>',
-    ));
-}
-
-add_action('widgets_init', 'theme_atelier_widgets_init');
-
-/**
  * Enqueue scripts and styles.
  */
 function theme_atelier_scripts()
@@ -132,12 +112,18 @@ function theme_atelier_scripts()
     // add styles css
     wp_register_style('custom_wp_main_css', get_template_directory_uri() . '/css/main.css', false, '1.0.0');
     wp_enqueue_style('custom_wp_main_css');
+    wp_register_style('custom_icons_css', 'https://fonts.googleapis.com/icon?family=Material+Icons', false, '1.0.0');
+    wp_enqueue_style('custom_icons_css');
+    wp_register_style('custom_font_awesome_css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', false, '1.0.0');
+    wp_enqueue_style('custom_font_awesome_css');
+
+
     wp_register_style('custom_wp_materialize_css', get_template_directory_uri() . '/css/styles.css', false, '1.0.0');
     wp_enqueue_style('custom_wp_materialize_css');
 
     // add main js
     wp_enqueue_script('jquery');
-    wp_enqueue_script('theme-atelier-js', get_template_directory_uri() . '/admin/js/dist/ta-main' . $js_suffix, array('jquery'), '1.0.0', true);
+    wp_enqueue_script('theme-atelier-js', get_template_directory_uri() . '/js/dist/ta-main' . $js_suffix, array('jquery'), '1.0.0', true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -165,7 +151,7 @@ function theme_atelier_admin_scripts()
 add_action('admin_enqueue_scripts', 'theme_atelier_admin_scripts');
 
 /**
- * Autoload all files in inc folder
+ * Autoload all files in inc folder anything you add in this folder will be included in all the backend
  */
 foreach (scandir(dirname(__FILE__) . "/inc") as $filename) {
     $path = dirname(__FILE__) . '/inc/' . $filename;

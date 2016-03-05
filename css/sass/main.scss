@@ -1,3 +1,30 @@
-* {
-  background: red;
+header {
+  .logo-container {
+    display: inline-block;
+  }
+}
+body {
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #0091ea;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #0091ea;
+    box-shadow: 0 1px 0 0 #0091ea;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid #0091ea;
+    box-shadow: 0 1px 0 0 #0091ea;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid #0091ea;
+    box-shadow: 0 1px 0 0 #0091ea;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #0091ea;
+  }
 }

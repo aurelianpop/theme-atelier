@@ -59,7 +59,6 @@ module.exports = function (grunt) {
                     'js/materialize/velocity.min.js',
                     'js/materialize/waves.js',
                     'js/main.js',
-                    'js/customizer.js',
                     'js/navigation.js',
                     'js/skip-link-focus-fix.js'
                 ],

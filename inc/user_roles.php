@@ -139,7 +139,16 @@ function atelier_show_user_data($value, $column_name, $user_id)
     }
 
     if ('children' == $column_name) {
-        return get_user_meta($user_id, 'children', true);
+        $the_children = get_user_meta($user_id, 'children', false);
+
+        $children = "";
+        foreach ($the_children as $childs) {
+            foreach ($childs as $child_id) {
+                $child = get_post($child_id);
+                $children .= $child->post_title . ", ";
+            }
+        }
+        return $children;
     }
 
     if ('anonymus' == $column_name) {
