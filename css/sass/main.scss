@@ -1,9 +1,88 @@
 header {
+  a:visited {
+    color: white;
+  }
+
   .logo-container {
     display: inline-block;
   }
+
+  .menu-container {
+    padding: 0 90px 0 90px;
+    vertical-align: middle;
+    background-color: #0091dc;
+  }
+
+  .padding-top10 {
+    padding-top: 10px;
+  }
+
+  .menu-item {
+    height: 64px;
+  }
+
+  .current-menu-item {
+    background-color: #0a99e3;
+    border: solid 1px #32a4df;
+    border-bottom: solid 1px white;
+
+    &>a {
+      color: white;
+    }
+  }
+
+  .at-social {
+    padding-left: 50px;
+    padding-right: 10px;
+
+    &>ul li a {
+      padding: 0;
+      color: #0091dc;
+
+      &:hover {
+        background-color: #0091dc;
+      }
+
+      &>i {
+        background: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+
+      &>i:hover {
+        color: #191970;
+      }
+    }
+  }
+
+  .at-logout, .at-login {
+    width: 64px;
+    height: 64px;
+    background-color: #292929;
+
+    &>a:hover, &>a:active, &>a:focus {
+      background-color: #111111;
+      color: white;
+    }
+
+    &>a i{
+      font-size: 36px;
+    }
+  }
+
+  .logout-menu {
+    background-color: #111111;
+    color: white;
+  }
 }
 body {
+  font-family: 'Open Sans', sans-serif;
+
   /* label focus color */
   .input-field input[type=text]:focus + label {
     color: #0091ea;

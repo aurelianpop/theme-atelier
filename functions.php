@@ -118,7 +118,8 @@ function theme_atelier_scripts()
     wp_enqueue_style('custom_icons_css');
     wp_register_style('custom_font_awesome_css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', false, '1.0.0');
     wp_enqueue_style('custom_font_awesome_css');
-
+    wp_register_style('custom_font_open_sans','https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic');
+    wp_enqueue_style('custom_font_open_sans');
 
     wp_register_style('custom_wp_materialize_css', get_template_directory_uri() . '/css/styles.css', false, '1.0.0');
     wp_enqueue_style('custom_wp_materialize_css');

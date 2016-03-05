@@ -62,19 +62,22 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
 
     <header id="masthead" class="site-header" role="banner">
         <nav id="site-navigation" class="main-navigation light-blue accent-4" role="navigation">
-            <div class="nav-wrapper">
+            <div class="nav-wrapper menu-container">
                 <div class="logo-container">
-                    <a href="#">Logo</a>
+                    <a href="#">
+                        <img class="padding-top10" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
+                    </a>
                 </div>
                 <?php if (!is_user_logged_in()) { ?>
                     <div class="at-login right hide-on-med-and-down">
-                        <a class="waves-effect waves-light modal-trigger lock_open" href="#at-login-modal"><i class="large material-icons">account_circle</i></a>
+                        <a class="waves-effect waves-light modal-trigger lock_open center-align" href="#at-login-modal"><i class="large material-icons">account_circle</i></a>
                     </div>
                 <?php } else { ?>
                     <div class="at-logout right hide-on-med-and-down">
-                        <a class="waves-effect waves-light" href="javascript:void(0)"><i class="large material-icons">account_circle</i></a>
+                        <a class="waves-effect waves-light center-align" href="javascript:void(0)"><i class="large material-icons">account_circle</i></a>
                         <ul class="logout-menu ta-inactive">
                             <li><a href="<?php echo wp_logout_url( get_bloginfo('url') ); ?>">Logout</a></li>
+                            <li>Something something</li>
                         </ul>
                     </div>
                 <?php } ?>
