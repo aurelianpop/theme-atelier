@@ -46,6 +46,8 @@ if (!function_exists('theme_atelier_setup')) :
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(array(
             'primary' => esc_html__('Primary', 'theme-atelier'),
+            'partner' => esc_html__('Partner Menu', 'theme-atelier'),
+            'parent' => esc_html__('Parent Menu', 'theme-atelier'),
         ));
 
         /*

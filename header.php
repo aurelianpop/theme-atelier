@@ -96,13 +96,16 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
             </div><!-- .site-branding -->
         </nav><!-- #site-navigation -->
         <?php if (is_user_logged_in()) { ?>
-<!--            <nav id="site-navigation" class="main-navigation light-blue accent-4" role="navigation">-->
-<!--                <ul class="account-navigation">-->
-<!--                    <li></li>-->
-<!--                    <li></li>-->
-<!--                    <li></li>-->
-<!--                </ul>-->
-<!--            </nav>-->
+            <nav id="site-navigation" class="main-navigation black" role="navigation">
+                    <?php  $user = wp_get_current_user();
+                    if ( in_array( 'partner', $user->roles ) ) {
+                        wp_nav_menu(array('container_class' => 'right hide-on-med-and-down', 'theme_location' => 'partner', 'menu_id' => 'partner-menu', 'walker' => new Atelier_Walker()));
+                    }
+
+                    if ( in_array( 'parent', $user->roles ) ) {
+                        wp_nav_menu(array('container_class' => 'right hide-on-med-and-down', 'theme_location' => 'parent', 'menu_id' => 'parent-menu', 'walker' => new Atelier_Walker()));
+                    } ?>
+            </nav>
         <?php } ?>
 
 
