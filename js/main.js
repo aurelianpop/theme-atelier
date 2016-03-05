@@ -8,8 +8,20 @@ jQuery(document).ready(function($) {
     /**
      * Change classes of the logout submenu so we can show and hide it
      */
-    $('.at-logout a').click(function() {
+    $('.at-logout a').click(function(e) {
+        e.stopPropagation();
         $(this).next().toggleClass('ta-inactive ta-active');
+    });
+
+    $(".button-collapse").sideNav();
+
+    /**
+     * Hide logout submenu when clicking on the page
+     */
+    $('body').on('click', function(){
+        if($('.logout-menu').hasClass('ta-active')) {
+            $('.logout-menu').toggleClass('ta-inactive ta-active');
+        }
     });
     $('at_changed').on('change', function() {
         console.log('sfaffs');

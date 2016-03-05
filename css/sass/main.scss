@@ -3,12 +3,21 @@ header {
     color: white;
   }
 
+  .menu {
+    & > li a{
+        padding: 0 5px;
+      }
+  }
+
+  /*Logo*/
   .logo-container {
     display: inline-block;
   }
 
+
+  /*Main menu items*/
   .menu-container {
-    padding: 0 90px 0 90px;
+    padding: 0 0 0 3%;
     vertical-align: middle;
     background-color: #0091dc;
   }
@@ -31,9 +40,11 @@ header {
     }
   }
 
+
+  /*Social media icons*/
   .at-social {
-    padding-left: 50px;
-    padding-right: 10px;
+    padding-left: 3%;
+    padding-right: 1%;
 
     &>ul li a {
       padding: 0;
@@ -60,13 +71,18 @@ header {
     }
   }
 
+
+  /*Logout menu*/
   .at-logout, .at-login {
     width: 64px;
     height: 64px;
-    background-color: #292929;
 
-    &>a:hover, &>a:active, &>a:focus {
+    &>a:hover {
       background-color: #111111;
+      color: white;
+    }
+
+    &>a:active, &>a:focus {
       color: white;
     }
 
@@ -76,8 +92,66 @@ header {
   }
 
   .logout-menu {
-    background-color: #111111;
+    background-color: #424242;
     color: white;
+
+    &>li a{
+      padding: 0 30px;
+
+      &:hover {
+        color: white;
+        background-color: #111111;
+      }
+
+      &:active, &:focus {
+        color: white;
+      }
+    }
+  }
+
+
+  /*Sub menu*/
+  .sub-menu-bar {
+    height: 35px;
+    //padding-right: 189px;
+    padding-right: 15%;
+
+    &>div ul{
+      .current-menu-item {
+        background-color: #212121;
+      }
+
+      &>li {
+        height: 35px;
+        line-height: 35px;
+
+        &:hover {
+          background-color: #111111;
+        }
+      }
+    }
+  }
+
+  /*Mobile friendly*/
+  .side-nav {
+    .current-menu-item {
+      background-color: #0091dc;
+    }
+
+    & > li {
+      width: 100%;
+      padding: 0;
+
+      & > a {
+        color: #212121;
+      }
+
+    }
+  }
+
+  .mobile_navbar {
+    padding-left:10px;
+    padding-right:20px;
   }
 }
 body {

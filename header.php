@@ -61,26 +61,36 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e('Skip to content', 'theme-atelier'); ?></a>
 
     <header id="masthead" class="site-header" role="banner">
-        <nav id="site-navigation" class="main-navigation light-blue accent-4" role="navigation">
+        <nav id="site-navigation" class="main-navigation" role="navigation">
             <div class="nav-wrapper menu-container">
+                <a href="#" data-activates="mobile-demo"
+                   class="button-collapse mobile_navbar">
+                    <i class="material-icons">menu</i>
+                </a>
+
                 <div class="logo-container">
-                    <a href="#">
+                    <a href="<?php echo home_url(); ?>">
                         <img class="padding-top10" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
                     </a>
                 </div>
+
                 <?php if (!is_user_logged_in()) { ?>
-                    <div class="at-login right hide-on-med-and-down">
-                        <a class="waves-effect waves-light modal-trigger lock_open center-align" href="#at-login-modal"><i class="large material-icons">account_circle</i></a>
+                    <div class="at-login right grey darken-3">
+                        <a class="waves-effect waves-light modal-trigger lock_open center-align" href="#at-login-modal"><i
+                                class="large material-icons">account_circle</i></a>
                     </div>
                 <?php } else { ?>
-                    <div class="at-logout right hide-on-med-and-down">
-                        <a class="waves-effect waves-light center-align" href="javascript:void(0)"><i class="large material-icons">account_circle</i></a>
+                    <div class="at-logout right grey darken-3">
+                        <a class="waves-effect waves-light center-align" href="javascript:void(0)"><i
+                                class="large material-icons">account_circle</i></a>
                         <ul class="logout-menu ta-inactive">
-                            <li><a href="<?php echo wp_logout_url( get_bloginfo('url') ); ?>">Logout</a></li>
+                            <li><a class="waves-effect waves-light"
+                                   href="<?php echo wp_logout_url(get_bloginfo('url')); ?>">Deconectare</a></li>
                         </ul>
                     </div>
                 <?php } ?>
-                <div class="at-social right hide-on-med-and-down">
+
+                <div class="at-social right">
                     <ul>
                         <?php
                         $social_links = get_option('atelier_social_media_options');
@@ -91,22 +101,22 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                     </ul>
 
                 </div>
-                <button class="menu-toggle" aria-controls="primary-menu"
-                        aria-expanded="false"><?php esc_html_e('Primary Menu', 'theme-atelier'); ?></button>
+
                 <?php wp_nav_menu(array('container_class' => 'right hide-on-med-and-down', 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'walker' => new Atelier_Walker())); ?>
+                <?php wp_nav_menu(array('menu_id' => 'mobile-demo', 'menu_class' => 'side-nav', 'theme_location' => 'primary', 'container' => false, 'walker' => new Atelier_Walker())); ?>
 
             </div><!-- .site-branding -->
         </nav><!-- #site-navigation -->
         <?php if (is_user_logged_in()) { ?>
-            <nav id="site-navigation" class="main-navigation black" role="navigation">
-                    <?php  $user = wp_get_current_user();
-                    if ( in_array( 'partner', $user->roles ) ) {
-                        wp_nav_menu(array('container_class' => 'right hide-on-med-and-down', 'theme_location' => 'partner', 'menu_id' => 'partner-menu', 'walker' => new Atelier_Walker()));
-                    }
+            <nav id="site-navigation" class="main-navigation grey darken-3 sub-menu-bar" role="navigation">
+                <?php $user = wp_get_current_user();
+                if (in_array('partner', $user->roles)) {
+                    wp_nav_menu(array('container_class' => 'right', 'theme_location' => 'partner', 'menu_id' => 'partner-menu', 'walker' => new Atelier_Walker()));
+                }
 
-                    if ( in_array( 'parent', $user->roles ) ) {
-                        wp_nav_menu(array('container_class' => 'right hide-on-med-and-down', 'theme_location' => 'parent', 'menu_id' => 'parent-menu', 'walker' => new Atelier_Walker()));
-                    } ?>
+                if (in_array('parent', $user->roles)) {
+                    wp_nav_menu(array('container_class' => 'right', 'theme_location' => 'parent', 'menu_id' => 'parent-menu', 'walker' => new Atelier_Walker()));
+                } ?>
             </nav>
         <?php } ?>
 
