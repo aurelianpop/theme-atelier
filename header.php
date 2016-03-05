@@ -77,7 +77,6 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                         <a class="waves-effect waves-light center-align" href="javascript:void(0)"><i class="large material-icons">account_circle</i></a>
                         <ul class="logout-menu ta-inactive">
                             <li><a href="<?php echo wp_logout_url( get_bloginfo('url') ); ?>">Logout</a></li>
-                            <li>Something something</li>
                         </ul>
                     </div>
                 <?php } ?>
