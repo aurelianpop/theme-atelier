@@ -73,7 +73,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                 <?php } else { ?>
                     <div class="at-logout right hide-on-med-and-down">
                         <a class="waves-effect waves-light" href="javascript:void(0)"><i class="large material-icons">account_circle</i></a>
-                        <ul class="logout-menu">
+                        <ul class="logout-menu ta-inactive">
                             <li><a href="<?php echo wp_logout_url( get_bloginfo('url') ); ?>">Logout</a></li>
                         </ul>
                     </div>
@@ -96,13 +96,13 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
             </div><!-- .site-branding -->
         </nav><!-- #site-navigation -->
         <?php if (is_user_logged_in()) { ?>
-            <nav id="site-navigation" class="main-navigation light-blue accent-4" role="navigation">
-                <ul class="account-navigation">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </nav>
+<!--            <nav id="site-navigation" class="main-navigation light-blue accent-4" role="navigation">-->
+<!--                <ul class="account-navigation">-->
+<!--                    <li></li>-->
+<!--                    <li></li>-->
+<!--                    <li></li>-->
+<!--                </ul>-->
+<!--            </nav>-->
         <?php } ?>
 
 

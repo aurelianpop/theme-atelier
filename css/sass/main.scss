@@ -27,4 +27,16 @@ body {
   .input-field .prefix.active {
     color: #0091ea;
   }
+
+  .logout-menu {
+    position: absolute;
+    right: 0;
+    z-index: 99999;
+    &.ta-inactive {
+      visibility: hidden;
+    }
+    &.ta-active {
+      visibility: visible;
+    }
+  }
 }
