@@ -143,10 +143,13 @@ function atelier_show_user_data($value, $column_name, $user_id)
 
         $children = "";
         foreach ($the_children as $childs) {
-            foreach ($childs as $child_id) {
-                $child = get_post($child_id);
-                $children .= $child->post_title . ", ";
+            if($childs) {
+                foreach ($childs as $child_id) {
+                    $child = get_post($child_id);
+                    $children .= $child->post_title . ", ";
+                }
             }
+
         }
         return $children;
     }
@@ -217,6 +220,8 @@ function atelier_progresive_search_action()
 
     wp_die(); // this is required to terminate immediately and return a proper response
 }
+
+
 
 
 

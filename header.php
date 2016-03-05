@@ -117,7 +117,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
         if (is_front_page()) {
             echo do_shortcode('[rev_slider home]');
         } else {
-            if (!is_page_template('page-templates/product-page.php')) {
+            if (!is_page_template('settings-page.php')) {
                 ?>
 
                 <h1 class="entry-title"><?php the_title(); ?></h1>
