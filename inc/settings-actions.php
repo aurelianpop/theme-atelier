@@ -107,7 +107,7 @@ function save_news_action()
     $result .= '<p>';
     $result .= substr($_POST['post_content'], 0, 300);
     $result .= '</p>';
-    $result .= '<a href="#at-delete-news-modal" class="modal-trigger lock_open secondary-content light-blue-text text-accent-4"><i class="material-icons">delete</i></a>';
+    $result .= '<a href="#at-delete-news-modal" data-id="'. $post_id .'" class="delete-item-modal modal-trigger lock_open secondary-content light-blue-text text-accent-4"><i class="material-icons">delete</i></a>';
     $result .= '</li>';
 
     echo $result;
@@ -122,7 +122,6 @@ add_action('wp_ajax_nopriv_delete_post', 'delete_post_action');
  */
 function delete_post_action()
 {
-    var_dump($_POST);
     if(isset($_POST['post_id'])) {
         $response = wp_delete_post( $_POST['post_id'], true );
     }
