@@ -13,6 +13,9 @@ jQuery(document).ready(function($) {
         $(this).next().toggleClass('ta-inactive ta-active');
     });
 
+    /**
+     * Initialize side navigation
+     */
     $(".button-collapse").sideNav();
 
     /**
@@ -23,9 +26,21 @@ jQuery(document).ready(function($) {
             $('.logout-menu').toggleClass('ta-inactive ta-active');
         }
     });
-    $('at_changed').on('change', function() {
-        console.log('sfaffs');
-    });
+
+    /**
+     * Hide logout from menu when side nav is visible
+     */
+    if($('#side_navigation_button').is(':visible'))
+    {
+        $('.logon-container').hide();
+    }
+    window.onresize = function(e){
+        if($('#side_navigation_button').is(':visible'))
+        {
+            $('.logon-container').hide();
+        }
+    }
+
     /**
      * Ajax save parents and partners frontend form data
      */

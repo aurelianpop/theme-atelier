@@ -63,24 +63,28 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
     <header id="masthead" class="site-header" role="banner">
         <nav id="site-navigation" class="main-navigation" role="navigation">
             <div class="nav-wrapper menu-container">
-                <a href="#" data-activates="mobile-demo"
+
+                <!-- Toggle button -->
+                <a id="side_navigation_button" href="#" data-activates="mobile-demo"
                    class="button-collapse mobile_navbar">
                     <i class="material-icons">menu</i>
                 </a>
 
+                <!-- Logo -->
                 <div class="logo-container">
                     <a href="<?php echo home_url(); ?>">
                         <img class="padding-top10" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
                     </a>
                 </div>
 
+                <!-- Logout -->
                 <?php if (!is_user_logged_in()) { ?>
-                    <div class="at-login right grey darken-3">
+                    <div class="logon-container at-login right grey darken-3">
                         <a class="waves-effect waves-light modal-trigger lock_open center-align" href="#at-login-modal"><i
                                 class="large material-icons">account_circle</i></a>
                     </div>
                 <?php } else { ?>
-                    <div class="at-logout right grey darken-3">
+                    <div class="logon-container at-logout right grey darken-3">
                         <a class="waves-effect waves-light center-align" href="javascript:void(0)"><i
                                 class="large material-icons">account_circle</i></a>
                         <ul class="logout-menu ta-inactive">
@@ -90,6 +94,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                     </div>
                 <?php } ?>
 
+                <!-- Social -->
                 <div class="at-social right">
                     <ul>
                         <?php
@@ -103,12 +108,16 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                 </div>
 
                 <?php wp_nav_menu(array('container_class' => 'right hide-on-med-and-down', 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'walker' => new Atelier_Walker())); ?>
-                <?php wp_nav_menu(array('menu_id' => 'mobile-demo', 'menu_class' => 'side-nav', 'theme_location' => 'primary', 'container' => false, 'walker' => new Atelier_Walker())); ?>
 
             </div><!-- .site-branding -->
         </nav><!-- #site-navigation -->
+
+        <!-- Mobile nav -->
+        <?php wp_nav_menu(array('menu_id' => 'mobile-demo', 'menu_class' => 'side-nav', 'theme_location' => 'primary', 'container' => false,  'items_wrap' => my_nav_wrap(), 'walker' => new Atelier_Walker())); ?>
+
+        <!-- Submenu -->
         <?php if (is_user_logged_in()) { ?>
-            <nav id="site-navigation" class="main-navigation grey darken-3 sub-menu-bar" role="navigation">
+            <nav id="site-sub-navigation" class="grey darken-3 sub-menu-bar" role="navigation">
                 <?php $user = wp_get_current_user();
                 if (in_array('partner', $user->roles)) {
                     wp_nav_menu(array('container_class' => 'right', 'theme_location' => 'partner', 'menu_id' => 'partner-menu', 'walker' => new Atelier_Walker()));
@@ -119,7 +128,6 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                 } ?>
             </nav>
         <?php } ?>
-
 
     </header><!-- #masthead -->
     <div id="top">
@@ -138,3 +146,31 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
     </div>
 
     <div id="content" class="site-content">
+
+<?php
+function my_nav_wrap() {
+    // default value of 'items_wrap' is <ul id="%1$s" class="%2$s">%3$s</ul>'
+
+    // open the <ul>, set 'menu_class' and 'menu_id' values
+    $wrap  = '<ul id="%1$s" class="%2$s">';
+
+    // get nav items as configured in /wp-admin/
+    $wrap .= '%3$s';
+
+    // add login or logout if the user is logged in
+    if (!is_user_logged_in()) {
+        $wrap .= '<li><a class="waves-effect waves-light modal-trigger" href="';
+        $wrap .= '#at-login-modal';
+        $wrap .= '">Autentificare</a></li>';
+    } else {
+        $wrap .= '<li><a class="waves-effect waves-light" href="';
+        $wrap .= urldecode(wp_logout_url(get_bloginfo('url')));
+        $wrap .= '">Deconectare</a></li>';
+    }
+
+    // close the <ul>
+    $wrap .= '</ul>';
+
+    // return the result
+    return $wrap;
+}

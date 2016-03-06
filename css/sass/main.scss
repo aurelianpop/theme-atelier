@@ -44,7 +44,6 @@ header {
   /*Social media icons*/
   .at-social {
     padding-left: 3%;
-    padding-right: 1%;
 
     &>ul li a {
       padding: 0;
@@ -73,9 +72,10 @@ header {
 
 
   /*Logout menu*/
-  .at-logout, .at-login {
+  .logon-container {
     width: 64px;
     height: 64px;
+    margin-left: 1%;
 
     &>a:hover {
       background-color: #111111;
@@ -113,8 +113,11 @@ header {
   /*Sub menu*/
   .sub-menu-bar {
     height: 35px;
-    //padding-right: 189px;
-    padding-right: 15%;
+    padding-right: 64px;
+    clear: both;
+    display: block;
+    float: left;
+    width: 100%;
 
     &>div ul{
       .current-menu-item {
