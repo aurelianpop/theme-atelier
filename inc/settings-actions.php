@@ -97,9 +97,37 @@ function save_news_action()
             $upload_overrides = array('test_form' => false);
             $attach_id = media_handle_upload($file, $upload_overrides);
             set_post_thumbnail($post_id, $attach_id);
+
+            $image_attributes = wp_get_attachment_image_src($attach_id);
         }
     }
+    $result ='<li class="at-news-item-' . $post_id . ' collection-item avatar">';
+    $result .= '<img src="'. $image_attributes[0] .'" alt="" class="circle">';
+    $result .= '<span class="title">'. $_POST['post_title'] .'</span>';
+    $result .= '<p>';
+    $result .= substr($_POST['post_content'], 0, 300);
+    $result .= '</p>';
+    $result .= '<a href="#at-delete-news-modal" class="modal-trigger lock_open secondary-content light-blue-text text-accent-4"><i class="material-icons">delete</i></a>';
+    $result .= '</li>';
 
-    echo 'Saved';
+    echo $result;
+    die();
+}
+
+add_action('wp_ajax_delete_post', 'delete_post_action');
+add_action('wp_ajax_nopriv_delete_post', 'delete_post_action');
+
+/**
+ * Delete post by post ID
+ */
+function delete_post_action()
+{
+    var_dump($_POST);
+    if(isset($_POST['post_id'])) {
+        $response = wp_delete_post( $_POST['post_id'], true );
+    }
+
+    echo $response->ID;
+
     die();
 }

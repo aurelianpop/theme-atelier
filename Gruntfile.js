@@ -29,7 +29,7 @@ module.exports = function (grunt) {
             },
             dist: { // materialize JS files
                 src: [
-
+                    'js/materialize/velocity.min.js',
                     'js/materialize/animation.js',
                     'js/materialize/buttons.js',
                     'js/materialize/cards.js',
@@ -56,7 +56,6 @@ module.exports = function (grunt) {
                     'js/materialize/toasts.js',
                     'js/materialize/tooltip.js',
                     'js/materialize/transitions.js',
-                    'js/materialize/velocity.min.js',
                     'js/materialize/waves.js',
                     'js/main.js',
                     'js/navigation.js',
