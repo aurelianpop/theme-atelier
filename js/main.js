@@ -61,4 +61,22 @@ jQuery(document).ready(function($) {
         }
     });
 
+    /**
+     * Ajax save parents and partners frontend form data
+     */
+    $('#at_save_news').ajaxForm({
+        url: ajax_front.ajaxurl,
+        beforeSubmit: function () {
+            $('#output').html('Saving ...');
+        },
+        success: function(response){
+            //TODO: put timeout here
+            $('#output').html('Saved');
+            $('#ta-partner-logo').attr('src', response);
+        },
+        error: function() {
+            $('#output').html('Something went wrong');
+        }
+    });
+
 });
