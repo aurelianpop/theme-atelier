@@ -1,3 +1,6 @@
+$standard_blue: #0091dc;
+$hover_blue: #0083C6;
+
 header {
   a:visited {
     color: white;
@@ -6,6 +9,7 @@ header {
   .menu {
     & > li a{
         padding: 0 5px;
+        color: white;
       }
   }
 
@@ -19,7 +23,7 @@ header {
   .menu-container {
     padding: 0 0 0 3%;
     vertical-align: middle;
-    background-color: #0091dc;
+    background-color: $standard_blue;
   }
 
   .padding-top10 {
@@ -47,10 +51,10 @@ header {
 
     &>ul li a {
       padding: 0;
-      color: #0091dc;
+      color: $standard_blue;
 
       &:hover {
-        background-color: #0091dc;
+        background-color: $standard_blue;
       }
 
       &>i {
@@ -129,7 +133,11 @@ header {
         line-height: 35px;
 
         &:hover {
-          background-color: #111111;
+           background-color: #111111;
+        }
+
+        &>a:hover {
+          color: white;
         }
       }
     }
@@ -138,7 +146,7 @@ header {
   /*Mobile friendly*/
   .side-nav {
     .current-menu-item {
-      background-color: #0091dc;
+      background-color: $standard_blue;
     }
 
     & > li {
@@ -194,5 +202,75 @@ body {
     &.ta-active {
       visibility: visible;
     }
+  }
+
+  /* Login modal styling */
+  .at-login-modal {
+      min-height: 300px;
+      max-width: 545px;
+
+      .login-header {
+        background-color: $standard_blue;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 30px;
+      }
+
+      .logon-icon-container{
+        margin: -25px auto;
+        padding-top: 5px;
+        background-color: white;
+        text-align: center;
+        border-radius: 50%;
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+
+      .logon-icon{
+        width: 30px;
+        height: 30px;
+        padding-top: 5px;
+        margin-top: 5px;
+        border-radius: 50%;
+        border: solid 2px $standard_blue;
+        color: $standard_blue;
+      }
+
+
+      #loginform {
+        padding: 35px;
+
+        .login-remember {
+          margin-top: 0px;
+
+          input[type="checkbox"].remember-me-text:checked + label:before {
+            border-right: solid 2px $standard_blue;
+            border-bottom: solid 2px $standard_blue;
+          }
+        }
+
+        .lost-password {
+          float:right;
+        }
+
+        .login-button {
+          box-shadow: none;
+          width:100%;
+          background: $standard_blue;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+          color: #ffffff;
+          font-size: 18px;
+          padding: 20px;
+          margin-top: 20px;
+
+          &:hover {
+            box-shadow: none;
+            background: $hover_blue;
+          }
+        }
+      }
   }
 }

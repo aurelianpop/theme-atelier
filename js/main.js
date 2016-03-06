@@ -35,9 +35,11 @@ jQuery(document).ready(function($) {
         $('.logon-container').hide();
     }
     window.onresize = function(e){
-        if($('#side_navigation_button').is(':visible'))
-        {
+        if($('#side_navigation_button').is(':visible')) {
             $('.logon-container').hide();
+        }
+        else {
+            $('.logon-container').show();
         }
     }
 

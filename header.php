@@ -21,9 +21,15 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="at-login-modal" class="at-login-modal modal" style="min-height: 300px; padding: 20px;">
-    <?php
+<div id="at-login-modal" class="at-login-modal modal">
+    <div class="login-header">
+        <img class="padding-top10" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
+    </div>
+    <div class="logon-icon-container">
+        <i class="logon-icon tiny material-icons">lock</i>
+    </div>
 
+    <?php
     $args = array(
         'echo' => true,
         'redirect' => home_url(''),
@@ -31,7 +37,7 @@
         'label_username' => __('Username sau Email'),
         'label_password' => __('Parola'),
         'label_remember' => __('Pastreaza-ma Autentificat'),
-        'label_log_in' => __('Log In'),
+        'label_log_in' => __('LOGIN'),
         'id_username' => 'user_login',
         'id_password' => 'user_pass',
         'id_remember' => 'rememberme',
@@ -40,9 +46,7 @@
         'value_username' => NULL,
         'value_remember' => true
     );
-
     at_wp_login_form($args);
-
     ?>
 
 </div>
