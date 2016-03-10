@@ -14,11 +14,21 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'theme-atelier' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'theme-atelier' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'theme-atelier' ), 'theme-atelier', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
-		</div><!-- .site-info -->
+		<div class="footer-container row grey darken-3">
+			<?php dynamic_sidebar( 'at_footer_area' ); ?>
+		</div>
+		<div class="footer-container-small">
+			<div class="social-container grey darken-3">
+				<ul>
+					<?php
+					$social_links = get_option('atelier_social_media_options');
+					echo !empty($social_links['facebook_link']) ? '<li class="waves-effect waves-light"><a href="' . $social_links['facebook_link'] . '" target="_blank"><i class="fa fa-facebook"></i></a></li>' : '';
+					echo !empty($social_links['twitter_link']) ? '<li class="waves-effect waves-light"><a href="' . $social_links['twitter_link'] . '" target="_blank"><i class="fa fa-twitter"></i></a></li>' : '';
+					echo !empty($social_links['linkedin_link']) ? '<li class="waves-effect waves-light"><a href="' . $social_links['linkedin_link'] . '" target="_blank"><i class="fa fa-linkedin"></i></a></li>' : '';
+					?>
+				</ul>
+			</div>
+		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

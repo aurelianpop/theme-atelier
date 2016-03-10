@@ -206,71 +206,154 @@ body {
 
   /* Login modal styling */
   .at-login-modal {
-      min-height: 300px;
-      max-width: 545px;
+    min-height: 300px;
+    max-width: 545px;
 
-      .login-header {
-        background-color: $standard_blue;
-        text-align: center;
-        padding-top: 20px;
-        padding-bottom: 30px;
-      }
+    .login-header {
+      background-color: $standard_blue;
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 30px;
+    }
 
-      .logon-icon-container{
-        margin: -25px auto;
-        padding-top: 5px;
-        background-color: white;
-        text-align: center;
-        border-radius: 50%;
-        display: block;
-        width: 50px;
-        height: 50px;
-      }
+    .logon-icon-container {
+      margin: -25px auto;
+      padding-top: 5px;
+      background-color: white;
+      text-align: center;
+      border-radius: 50%;
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
 
-      .logon-icon{
-        width: 30px;
-        height: 30px;
-        padding-top: 5px;
-        margin-top: 5px;
-        border-radius: 50%;
-        border: solid 2px $standard_blue;
-        color: $standard_blue;
-      }
+    .logon-icon {
+      width: 30px;
+      height: 30px;
+      padding-top: 5px;
+      margin-top: 5px;
+      border-radius: 50%;
+      border: solid 2px $standard_blue;
+      color: $standard_blue;
+    }
 
+    #loginform {
+      padding: 35px;
 
-      #loginform {
-        padding: 35px;
+      .login-remember {
+        margin-top: 0px;
 
-        .login-remember {
-          margin-top: 0px;
-
-          input[type="checkbox"].remember-me-text:checked + label:before {
-            border-right: solid 2px $standard_blue;
-            border-bottom: solid 2px $standard_blue;
-          }
+        input[type="checkbox"].remember-me-text:checked + label:before {
+          border-right: solid 2px $standard_blue;
+          border-bottom: solid 2px $standard_blue;
         }
+      }
 
-        .lost-password {
-          float:right;
-        }
+      .lost-password {
+        float: right;
+      }
 
-        .login-button {
+      .login-button {
+        box-shadow: none;
+        width: 100%;
+        background: $standard_blue;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 18px;
+        padding: 20px;
+        margin-top: 20px;
+
+        &:hover {
           box-shadow: none;
-          width:100%;
-          background: $standard_blue;
-          -webkit-border-radius: 5px;
-          -moz-border-radius: 5px;
-          border-radius: 5px;
-          color: #ffffff;
-          font-size: 18px;
-          padding: 20px;
-          margin-top: 20px;
+          background: $hover_blue;
+        }
+      }
+    }
+  }
+
+  .site-footer {
+    font-family: 'Open Sans', sans-serif;
+
+    .footer-container {
+      font-size: 13px;
+      margin: 0px;
+      padding: 30px 70px 30px 70px;
+      color: #a3a3a3;
+
+      .widget {
+        padding: 0 30px;
+
+        #donate-button {
+          border: solid 1px $standard_blue;
+          padding: 10px 20px;
+          margin-top: 10px;
+          color: white;
 
           &:hover {
-            box-shadow: none;
-            background: $hover_blue;
+            background-color: $hover_blue;
+            border-color: white;
           }
         }
       }
+
+      & > div {
+        ul {
+          margin-left: 0;
+
+          & > li, & > li a {
+            color: #a3a3a3;
+            padding-bottom: 6px;
+
+            &:hover {
+              color: white;
+            }
+          }
+        }
+
+        h3 {
+          font-size: 18px;
+          color: white;
+        }
+
+        hr {
+          color: white;
+          height: 1px !important;
+          margin-left: 0;
+          width: 100px;
+        }
+      }
+    }
+
+    .footer-container-small {
+      height: 60px;
+      background-color:black;
+
+      .social-container {
+        height: 60px;
+        float: right;
+        margin-right: 5%;
+        color: white;
+        padding-top: 12px;
+
+        &>ul {
+          margin: 0;
+          padding: 0 20px;
+
+          &>li {
+            width: 35px;
+            height: 35px;
+            background-color: red;
+            padding: 5px;
+            margin: 0 5px;
+
+            &>a{
+              color: white;
+            }
+          }
+        }
+      }
+    }
   }
 }
