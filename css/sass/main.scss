@@ -279,14 +279,20 @@ body {
     .footer-container {
       font-size: 13px;
       margin: 0px;
-      padding: 30px 70px 30px 70px;
+      padding: 3% 0;
       color: #a3a3a3;
 
       .widget {
         padding: 0 30px;
 
+        &:first-of-type {
+          padding-left: 0;
+        }
+
         #donate-button {
           border: solid 1px $standard_blue;
+          display: inline-block;
+          text-align: center;
           padding: 10px 20px;
           margin-top: 10px;
           color: white;
@@ -330,11 +336,13 @@ body {
       height: 60px;
       background-color:black;
 
+      .copyright-container {
+        padding-top: 19px;
+        color: #fff;
+      }
       .social-container {
         height: 60px;
-        float: right;
         margin-right: 5%;
-        color: white;
         padding-top: 12px;
 
         &>ul {
@@ -344,12 +352,19 @@ body {
           &>li {
             width: 35px;
             height: 35px;
-            background-color: red;
+            background-color: #222222;
+            text-align: center;
             padding: 5px;
             margin: 0 5px;
 
             &>a{
               color: white;
+            }
+
+            &:hover{
+              a {
+                color: $hover_blue;
+              }
             }
           }
         }
