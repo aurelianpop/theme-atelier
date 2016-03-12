@@ -7,17 +7,16 @@ header {
   }
 
   .menu {
-    & > li a{
-        padding: 0 5px;
-        color: white;
-      }
+    & > li a {
+      padding: 0 5px;
+      color: white;
+    }
   }
 
   /*Logo*/
   .logo-container {
     display: inline-block;
   }
-
 
   /*Main menu items*/
   .menu-container {
@@ -39,17 +38,16 @@ header {
     border: solid 1px #32a4df;
     border-bottom: solid 1px white;
 
-    &>a {
+    & > a {
       color: white;
     }
   }
-
 
   /*Social media icons*/
   .at-social {
     padding-left: 3%;
 
-    &>ul li a {
+    & > ul li a {
       padding: 0;
       color: $standard_blue;
 
@@ -57,7 +55,7 @@ header {
         background-color: $standard_blue;
       }
 
-      &>i {
+      & > i {
         background: white;
         width: 20px;
         height: 20px;
@@ -68,12 +66,11 @@ header {
         margin-right: 5px;
       }
 
-      &>i:hover {
+      & > i:hover {
         color: #191970;
       }
     }
   }
-
 
   /*Logout menu*/
   .logon-container {
@@ -81,16 +78,16 @@ header {
     height: 64px;
     margin-left: 1%;
 
-    &>a:hover {
+    & > a:hover {
       background-color: #111111;
       color: white;
     }
 
-    &>a:active, &>a:focus {
+    & > a:active, & > a:focus {
       color: white;
     }
 
-    &>a i{
+    & > a i {
       font-size: 36px;
     }
   }
@@ -99,7 +96,7 @@ header {
     background-color: #424242;
     color: white;
 
-    &>li a{
+    & > li a {
       padding: 0 30px;
 
       &:hover {
@@ -113,7 +110,6 @@ header {
     }
   }
 
-
   /*Sub menu*/
   .sub-menu-bar {
     height: 35px;
@@ -123,20 +119,20 @@ header {
     float: left;
     width: 100%;
 
-    &>div ul{
+    & > div ul {
       .current-menu-item {
         background-color: #212121;
       }
 
-      &>li {
+      & > li {
         height: 35px;
         line-height: 35px;
 
         &:hover {
-           background-color: #111111;
+          background-color: #111111;
         }
 
-        &>a:hover {
+        & > a:hover {
           color: white;
         }
       }
@@ -161,35 +157,40 @@ header {
   }
 
   .mobile_navbar {
-    padding-left:10px;
-    padding-right:20px;
+    padding-left: 10px;
+    padding-right: 20px;
   }
 }
+
 body {
   font-family: 'Open Sans', sans-serif;
 
-  /* label focus color */
-  .input-field input[type=text]:focus + label {
-    color: #0091ea;
-  }
-  /* label underline focus color */
-  .input-field input[type=text]:focus {
-    border-bottom: 1px solid #0091ea;
-    box-shadow: 0 1px 0 0 #0091ea;
-  }
-  /* valid color */
-  .input-field input[type=text].valid {
-    border-bottom: 1px solid #0091ea;
-    box-shadow: 0 1px 0 0 #0091ea;
-  }
-  /* invalid color */
-  .input-field input[type=text].invalid {
-    border-bottom: 1px solid #0091ea;
-    box-shadow: 0 1px 0 0 #0091ea;
-  }
-  /* icon prefix focus color */
-  .input-field .prefix.active {
-    color: #0091ea;
+  .input-field {
+    /* label focus color */
+    input[type=text]:focus + label {
+      color: #0091ea;
+    }
+
+    /* label underline focus color */
+    input[type=text]:focus, input[type=password]:focus {
+      border-bottom: 1px solid #0091ea;
+      box-shadow: 0 1px 0 0 #0091ea;
+    }
+
+    /* valid color */
+    input[type=text].valid {
+      border-bottom: 1px solid #0091ea;
+      box-shadow: 0 1px 0 0 #0091ea;
+    }
+    /* invalid color */
+    input[type=text].invalid {
+      border-bottom: 1px solid #0091ea;
+      box-shadow: 0 1px 0 0 #0091ea;
+    }
+    /* icon prefix focus color */
+    .prefix.active {
+      color: #0091ea;
+    }
   }
 
   .logout-menu {
@@ -276,6 +277,11 @@ body {
   .site-footer {
     font-family: 'Open Sans', sans-serif;
 
+    .newsletter-container {
+      background-color: $standard_blue;
+      height: 200px;
+    }
+
     .footer-container {
       font-size: 13px;
       margin: 0px;
@@ -334,7 +340,7 @@ body {
 
     .footer-container-small {
       height: 60px;
-      background-color:black;
+      background-color: black;
 
       .copyright-container {
         padding-top: 19px;
@@ -345,11 +351,11 @@ body {
         margin-right: 5%;
         padding-top: 12px;
 
-        &>ul {
+        & > ul {
           margin: 0;
           padding: 0 20px;
 
-          &>li {
+          & > li {
             width: 35px;
             height: 35px;
             background-color: #222222;
@@ -357,17 +363,24 @@ body {
             padding: 5px;
             margin: 0 5px;
 
-            &>a{
+            & > a {
               color: white;
             }
 
-            &:hover{
+            &:hover {
               a {
                 color: $hover_blue;
               }
             }
           }
         }
+      }
+    }
+
+    .footer-partners {
+      .partner-logo {
+        max-height: 200px;
+        padding: 30px;
       }
     }
   }
