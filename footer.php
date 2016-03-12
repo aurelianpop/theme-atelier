@@ -24,16 +24,23 @@
         <div class="container row">
             <?php
             $partners = get_users('role=Partner');
-            $i = 0;
             $partner_logos = array();
             foreach ($partners as $partner) {
-                if ($partner->logo) {
-                    $partner_logos[] = $partner;
+                if ($partner->logo) { $partner_logos[] = $partner; }
+            }
+            if(count($partner_logos)>4) {
+                $partner_keys = array_rand($partner_logos, 4);
+                foreach ($partner_keys as $key) {
+                    echo '<div class="col s12 m3 center-align"><img class="partner-logo" src="' . $partner_logos[$key]->logo . '"></img></div>';
                 }
             }
-            $partner_keys = array_rand($partner_logos, 4);
-            foreach ($partner_keys as $key) {
-                echo '<div class="col s12 m3 center-align"><img class="partner-logo" src="' . $partner_logos[$key]->logo . '"></img></div>';
+            else
+            {
+                if($partner_logos) {
+                    foreach ($partner_logos as $partner) {
+                        echo '<div class="col s12 m3 center-align"><img class="partner-logo" src="' . $partner->logo . '"></img></div>';
+                    }
+                }
             }
             ?>
         </div>
