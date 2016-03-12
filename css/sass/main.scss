@@ -376,12 +376,24 @@ body {
         }
       }
     }
-
     .footer-partners {
       .partner-logo {
         max-height: 200px;
         padding: 30px;
       }
+    }
+  }
+  .card-panel {
+    .at-partner-logo {
+      img {
+        max-height: 150px;
+      }
+    }
+    p {
+      margin: 0 ;
+    }
+    .at-parner-name {
+      margin-top: 0 ;
     }
   }
 }
