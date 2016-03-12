@@ -31,7 +31,6 @@
 
         // ADD IMAGE LINK
         addImgLink.on( 'click', function( event ){
-
             event.preventDefault();
 
             // If the media frame already exists, reopen it.

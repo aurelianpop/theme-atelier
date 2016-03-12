@@ -16,14 +16,15 @@ class AtelierOptions
      * Holds the values to be used in the fields callbacks
      */
     private $options;
+    private $newsletter_img;
 
     /**
      * Start up
      */
     public function __construct()
     {
-        add_action( 'admin_menu', array( $this, 'atelier_add_page' ) );
-        add_action( 'admin_init', array( $this, 'page_init' ) );
+        add_action('admin_menu', array($this, 'atelier_add_page'));
+        add_action('admin_init', array($this, 'page_init'));
     }
 
     /**
@@ -37,7 +38,7 @@ class AtelierOptions
             'Atelier Settings',
             'manage_options',
             'atelier_settings',
-            array( $this, 'create_admin_page' )
+            array($this, 'create_admin_page')
         );
     }
 
@@ -47,15 +48,16 @@ class AtelierOptions
     public function create_admin_page()
     {
         // Set class property
-        $this->options = get_option( 'atelier_social_media_options' );
+        $this->options = get_option('atelier_social_media_options');
+        $this->newsletter_img = get_option('atelier_newsletter_image');
         ?>
         <div class="wrap">
             <h2>Atelierul De Fapte Bune Settings</h2>
             <form method="post" action="options.php">
                 <?php
                 // This prints out all hidden setting fields
-                settings_fields( 'atelier_option_group' );
-                do_settings_sections( 'atelier_settings' );
+                settings_fields('atelier_option_group');
+                do_settings_sections('atelier_settings');
                 submit_button();
                 ?>
             </form>
@@ -68,23 +70,46 @@ class AtelierOptions
      */
     public function page_init()
     {
+        /*Newsletter*/
+        register_setting(
+            'atelier_option_group',
+            'atelier_newsletter_image',
+            array($this, 'sanitize')
+        );
+
+        add_settings_section(
+            'atelier_newsletter_field', // ID
+            'Newsletter Setting', // Title
+            array($this, 'print_newsletter_info'), // Callback
+            'atelier_settings' // Page
+        );
+
+        add_settings_field(
+            'newsletter_img_url', // ID
+            'Newsletter image', // Title
+            array($this, 'newsletter_img_callback'), // Callback
+            'atelier_settings', // Page
+            'atelier_newsletter_field' // Section
+        );
+
+        /*Social Media*/
         register_setting(
             'atelier_option_group', // Option group
             'atelier_social_media_options', // Option name
-            array( $this, 'sanitize' ) // Sanitize
+            array($this, 'sanitize') // Sanitize
         );
 
         add_settings_section(
             'atelier_social_fields', // ID
             'Social Media Settings', // Title
-            array( $this, 'print_section_info' ), // Callback
+            array($this, 'print_section_info'), // Callback
             'atelier_settings' // Page
         );
 
         add_settings_field(
             'facebook_link', // ID
             'Facebook', // Title
-            array( $this, 'facebook_link_callback' ), // Callback
+            array($this, 'facebook_link_callback'), // Callback
             'atelier_settings', // Page
             'atelier_social_fields' // Section
         );
@@ -92,7 +117,7 @@ class AtelierOptions
         add_settings_field(
             'twitter_link', // ID
             'Twitter', // Title
-            array( $this, 'twitter_link_callback' ), // Callback
+            array($this, 'twitter_link_callback'), // Callback
             'atelier_settings', // Page
             'atelier_social_fields' // Section
         );
@@ -100,7 +125,7 @@ class AtelierOptions
         add_settings_field(
             'linkedin_link',
             'LinkedIn',
-            array( $this, 'linkedin_link_callback' ),
+            array($this, 'linkedin_link_callback'),
             'atelier_settings',
             'atelier_social_fields'
         );
@@ -111,17 +136,20 @@ class AtelierOptions
      *
      * @param array $input Contains all settings fields as array keys
      */
-    public function sanitize( $input )
+    public function sanitize($input)
     {
         $new_input = array();
-        if( isset( $input['facebook_link'] ) )
-            $new_input['facebook_link'] = sanitize_text_field( $input['facebook_link'] );
+        if (isset($input['newsletter_img_url']))
+            $new_input['newsletter_img_url'] = sanitize_text_field($input['newsletter_img_url']);
 
-        if( isset( $input['twitter_link'] ) )
-            $new_input['twitter_link'] = sanitize_text_field( $input['twitter_link'] );
+        if (isset($input['facebook_link']))
+            $new_input['facebook_link'] = sanitize_text_field($input['facebook_link']);
 
-        if( isset( $input['linkedin_link'] ) )
-            $new_input['linkedin_link'] = sanitize_text_field( $input['linkedin_link'] );
+        if (isset($input['twitter_link']))
+            $new_input['twitter_link'] = sanitize_text_field($input['twitter_link']);
+
+        if (isset($input['linkedin_link']))
+            $new_input['linkedin_link'] = sanitize_text_field($input['linkedin_link']);
 
         return $new_input;
     }
@@ -135,13 +163,57 @@ class AtelierOptions
     }
 
     /**
+     * Print the Section text
+     */
+    public function print_newsletter_info()
+    {
+        print 'Please upload an image for newsletter section';
+    }
+
+    /**
+     * Get the settings option array and print one of its values
+     */
+    public function newsletter_img_callback()
+    {
+        ?>
+        <div class="ta-table-logo"><?php
+
+        printf(
+            '<input id="newsletter_img" class="partner-logo-url regular-text" name="atelier_newsletter_image[newsletter_img_url]" type="hidden" value="%s"/>',
+            isset($this->newsletter_img['newsletter_img_url']) ? esc_attr($this->newsletter_img['newsletter_img_url']) : ''
+        ); ?>
+
+        <div class="custom-img-container">
+            <?php if ($this->newsletter_img['newsletter_img_url']) : ?>
+                <img src="<?php echo $this->newsletter_img['newsletter_img_url'] ?>" alt="" style="max-width:100%;"/>
+            <?php endif; ?>
+        </div>
+        <p class="hide-if-no-js">
+            <a class="upload-custom-img <?php if ($this->newsletter_img['newsletter_img_url']) {
+                echo 'hidden';
+            } ?>"
+               href="">
+                <?php _e('Set Partner Logo') ?>
+            </a>
+            <a class="delete-custom-img <?php if (!$this->newsletter_img['newsletter_img_url']) {
+                echo 'hidden';
+            } ?>"
+               href="#">
+                <?php _e('Remove Partner Logo') ?>
+            </a>
+        </p>
+        </div>
+        <?php
+    }
+
+    /**
      * Get the settings option array and print one of its values
      */
     public function facebook_link_callback()
     {
         printf(
             '<input type="text" id="facebook_link" class="regular-text" name="atelier_social_media_options[facebook_link]" value="%s" />',
-            isset( $this->options['facebook_link'] ) ? esc_attr( $this->options['facebook_link']) : ''
+            isset($this->options['facebook_link']) ? esc_attr($this->options['facebook_link']) : ''
         );
     }
 
@@ -152,7 +224,7 @@ class AtelierOptions
     {
         printf(
             '<input type="text" id="facebook_link" class="regular-text" name="atelier_social_media_options[twitter_link]" value="%s" />',
-            isset( $this->options['twitter_link'] ) ? esc_attr( $this->options['twitter_link']) : ''
+            isset($this->options['twitter_link']) ? esc_attr($this->options['twitter_link']) : ''
         );
     }
 
@@ -163,10 +235,10 @@ class AtelierOptions
     {
         printf(
             '<input type="text" id="linkedin_link" class="regular-text" name="atelier_social_media_options[linkedin_link]" value="%s" />',
-            isset( $this->options['linkedin_link'] ) ? esc_attr( $this->options['linkedin_link']) : ''
+            isset($this->options['linkedin_link']) ? esc_attr($this->options['linkedin_link']) : ''
         );
     }
 }
 
-if( is_admin() )
+if (is_admin())
     $my_settings_page = new AtelierOptions();

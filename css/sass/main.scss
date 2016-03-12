@@ -1,32 +1,52 @@
 $standard_blue: #0091dc;
 $hover_blue: #0083C6;
+$footer_dark_grey: #222222;
+
+//a,a:hover,a:active,a:focus {
+//  color: #fff;
+//}
+
+.margin0 {
+  margin: 0 !important;
+}
+
+.padding-top10 {
+  padding-top: 10px;
+}
+
+.padding-top30 {
+  padding-top: 30px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+/*General font*/
+.font-weight700{
+  font-weight: 700
+}
+
+.font-weight800{
+  font-weight: 800
+}
 
 header {
   a:visited {
-    color: white;
+    color: #fff;
   }
 
   .menu {
     & > li a {
       padding: 0 5px;
-      color: white;
+      color: #fff;
     }
-  }
-
-  /*Logo*/
-  .logo-container {
-    display: inline-block;
   }
 
   /*Main menu items*/
   .menu-container {
     padding: 0 0 0 3%;
     vertical-align: middle;
-    background-color: $standard_blue;
-  }
-
-  .padding-top10 {
-    padding-top: 10px;
   }
 
   .menu-item {
@@ -49,14 +69,12 @@ header {
 
     & > ul li a {
       padding: 0;
-      color: $standard_blue;
 
       &:hover {
-        background-color: $standard_blue;
+        background-color: #0091ea;
       }
 
       & > i {
-        background: white;
         width: 20px;
         height: 20px;
         border-radius: 50%;
@@ -206,21 +224,19 @@ body {
   }
 
   /* Login modal styling */
-  .at-login-modal {
+  .modal {
     min-height: 300px;
     max-width: 545px;
 
-    .login-header {
-      background-color: $standard_blue;
+    .modal-header {
       text-align: center;
       padding-top: 20px;
       padding-bottom: 30px;
     }
 
-    .logon-icon-container {
+    .modal-icon-container {
       margin: -25px auto;
       padding-top: 5px;
-      background-color: white;
       text-align: center;
       border-radius: 50%;
       display: block;
@@ -228,17 +244,16 @@ body {
       height: 50px;
     }
 
-    .logon-icon {
+    .modal-icon {
       width: 30px;
       height: 30px;
       padding-top: 5px;
       margin-top: 5px;
       border-radius: 50%;
       border: solid 2px $standard_blue;
-      color: $standard_blue;
     }
 
-    #loginform {
+    .modal-form {
       padding: 35px;
 
       .login-remember {
@@ -278,13 +293,28 @@ body {
     font-family: 'Open Sans', sans-serif;
 
     .newsletter-container {
-      background-color: $standard_blue;
-      height: 200px;
+      min-height: 250px;
+      padding: 20px 0;
+
+      .newsletter-img {
+        max-width: 250px;
+        max-height: 250px;
+        -ms-transform: rotate(356deg); /* IE 9 */
+        -webkit-transform: rotate(356deg); /* Chrome, Safari, Opera */
+        transform: rotate(356deg);
+        float:right;
+        margin-right: 5%;
+        margin-top: -30px;
+        border:8px solid #fff;
+      }
+
+      .join-btn:hover {
+        color: #ccc;
+      }
     }
 
     .footer-container {
       font-size: 13px;
-      margin: 0px;
       padding: 3% 0;
       color: #a3a3a3;
 
@@ -305,7 +335,7 @@ body {
 
           &:hover {
             background-color: $hover_blue;
-            border-color: white;
+            border-color: #fff;
           }
         }
       }
@@ -314,12 +344,12 @@ body {
         ul {
           margin-left: 0;
 
-          & > li, & > li a {
+          li, li a {
             color: #a3a3a3;
             padding-bottom: 6px;
 
             &:hover {
-              color: white;
+              color: #fff;
             }
           }
         }
@@ -344,28 +374,22 @@ body {
 
       .copyright-container {
         padding-top: 19px;
-        color: #fff;
       }
       .social-container {
         height: 60px;
         margin-right: 5%;
         padding-top: 12px;
 
-        & > ul {
-          margin: 0;
+        ul {
           padding: 0 20px;
 
-          & > li {
+          li {
             width: 35px;
             height: 35px;
-            background-color: #222222;
+            background-color: $footer_dark_grey;
             text-align: center;
             padding: 5px;
             margin: 0 5px;
-
-            & > a {
-              color: white;
-            }
 
             &:hover {
               a {

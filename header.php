@@ -22,11 +22,11 @@
 
 <body <?php body_class(); ?>>
 <div id="at-login-modal" class="at-login-modal modal">
-    <div class="login-header">
+    <div class="modal-header light-blue accent-4">
         <img class="padding-top10" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
     </div>
-    <div class="logon-icon-container">
-        <i class="logon-icon tiny material-icons">lock</i>
+    <div class="modal-icon-container white">
+        <i class="modal-icon tiny material-icons light-blue-text text-accent-4">lock</i>
     </div>
 
     <?php
@@ -66,7 +66,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
 
     <header id="masthead" class="site-header" role="banner">
         <nav id="site-navigation" class="main-navigation" role="navigation">
-            <div class="nav-wrapper menu-container">
+            <div class="nav-wrapper menu-container light-blue accent-4">
 
                 <!-- Toggle button -->
                 <a id="side_navigation_button" href="#" data-activates="mobile-demo"
@@ -75,7 +75,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                 </a>
 
                 <!-- Logo -->
-                <div class="logo-container">
+                <div class="inline-block">
                     <a href="<?php echo home_url(); ?>">
                         <img class="padding-top10" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
                     </a>
@@ -103,9 +103,9 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                     <ul>
                         <?php
                         $social_links = get_option('atelier_social_media_options');
-                        echo !empty($social_links['facebook_link']) ? '<li class="waves-effect waves-light"><a href="' . $social_links['facebook_link'] . '" target="_blank"><i class="fa fa-facebook"></i></a></li>' : '';
-                        echo !empty($social_links['twitter_link']) ? '<li class="waves-effect waves-light"><a href="' . $social_links['twitter_link'] . '" target="_blank"><i class="fa fa-twitter"></i></a></li>' : '';
-                        echo !empty($social_links['linkedin_link']) ? '<li class="waves-effect waves-light"><a href="' . $social_links['linkedin_link'] . '" target="_blank"><i class="fa fa-linkedin"></i></a></li>' : '';
+                        echo !empty($social_links['facebook_link']) ? '<li class="waves-effect waves-light"><a class="light-blue-text text-accent-4" href="' . $social_links['facebook_link'] . '" target="_blank"><i class="fa fa-facebook white"></i></a></li>' : '';
+                        echo !empty($social_links['twitter_link']) ? '<li class="waves-effect waves-light"><a class="light-blue-text text-accent-4" href="' . $social_links['twitter_link'] . '" target="_blank"><i class="fa fa-twitter white"></i></a></li>' : '';
+                        echo !empty($social_links['linkedin_link']) ? '<li class="waves-effect waves-light"><a class="light-blue-text text-accent-4" href="' . $social_links['linkedin_link'] . '" target="_blank"><i class="fa fa-linkedin white"></i></a></li>' : '';
                         ?>
                     </ul>
 
@@ -146,7 +146,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
         } ?>
     </div>
 
-    <div id="content" class="site-content">
+    <div id="content" class="site-content container">
 
 <?php
 function my_nav_wrap() {
