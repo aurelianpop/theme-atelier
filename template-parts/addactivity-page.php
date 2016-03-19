@@ -99,7 +99,7 @@
                         <img src="<?php echo $url; ?>" alt="" class="circle">
                         <span class="title"><?php echo $post->post_title; ?></span>
                         <p>
-                            <?php $content = substr($post->post_content, 0, strpos($post->post_content, "<h1>")); ?>
+                            <?php $content = substr($post->post_content, 0, strpos($post->post_content, "<")); ?>
                             <?php echo substr($content, 0, 300); ?>
                         </p>
                         <a href="#at-delete-news-modal" data-id="<?php echo $post->ID; ?>" class="delete-item-modal modal-trigger lock_open secondary-content light-blue-text text-accent-4"><i class="material-icons">delete</i></a>

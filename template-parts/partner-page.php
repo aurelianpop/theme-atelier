@@ -51,7 +51,7 @@ $user = get_user_by('ID', $partner_id);
                     'order' => 'DESC',
                     'post_type' => 'atelier_activities',
                     'author' => $user->ID,
-                    'post_status' => 'published',
+                    'post_status' => 'publish',
                     'suppress_filters' => true
                 );
                 $posts_array = get_posts($args);
@@ -65,7 +65,8 @@ $user = get_user_by('ID', $partner_id);
                                 <img src="<?php echo $url; ?>" alt="" class="circle">
                                 <span class="title"><?php echo $post->post_title; ?></span>
                                 <p>
-                                    <?php echo substr($post->post_content, 0, 300); ?>
+                                    <?php $content = substr($post->post_content, 0, strpos($post->post_content, "<")); ?>
+                                    <?php echo substr($content, 0, 300); ?>
                                 </p>
                             </li>
                         <?php } ?>

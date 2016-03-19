@@ -64,16 +64,6 @@ function theme_atelier_entry_footer() {
 		comments_popup_link( esc_html__( 'Leave a comment', 'theme-atelier' ), esc_html__( '1 Comment', 'theme-atelier' ), esc_html__( '% Comments', 'theme-atelier' ) );
 		echo '</span>';
 	}
-
-	edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'theme-atelier' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
 }
 endif;
 
