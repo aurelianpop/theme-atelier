@@ -25,13 +25,13 @@ function theme_atelier_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'theme-atelier' ),
+		esc_html_x( 'Adaugat in %s', 'post date', 'theme-atelier' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'theme-atelier' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		esc_html_x( 'de catre %s', 'post author', 'theme-atelier' ),
+		'<span class="author vcard"><strong>' . esc_html( get_the_author() ) . '</strong></span>'
 	);
 
 	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.

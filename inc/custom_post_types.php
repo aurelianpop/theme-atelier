@@ -48,7 +48,7 @@ function ta_custom_posts_init() {
     register_post_type( 'atelier_children', $args );
 
     $labels = array(
-        'name'               => _x( 'Activities', 'post type general name', 'your-plugin-textdomain' ),
+        'name'               => _x( 'Activitati', 'post type general name', 'your-plugin-textdomain' ),
         'singular_name'      => _x( 'Activity', 'post type singular name', 'your-plugin-textdomain' ),
         'menu_name'          => _x( 'Activities', 'admin menu', 'your-plugin-textdomain' ),
         'name_admin_bar'     => _x( 'Activities', 'add new on admin bar', 'your-plugin-textdomain' ),

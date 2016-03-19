@@ -18,12 +18,20 @@
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
 
-		if ( 'post' === get_post_type() ) : ?>
+		if ( 'post' === get_post_type() || 'atelier_activities' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php theme_atelier_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
+		<?php
+		$feature_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+		?>
+		<div class="row">
+			<div class="ta-featured-image col s12 m6">
+				<img src="<?php echo $feature_image ?>"/>
+			</div>
+		</div>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
