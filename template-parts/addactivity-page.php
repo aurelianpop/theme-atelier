@@ -26,36 +26,57 @@
         <div class="ta-add-news">
             <form id="at_save_news" action="" method="post" enctype="multipart/form-data">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s4">
                         <input id="post_title" type="text" name="post_title" required="" aria-required="true" value="" class="validate">
-                        <label for="post_title">Titlul</label>
+                        <label for="post_title">Titlul Activitatii</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <?php
+                        $taxonomy = 'atelier_activities_type';
+
+                        $tax_terms = get_terms( 'atelier_activities_type', array(
+                            'orderby'    => 'count',
+                            'hide_empty' => 0
+                        ) );
+                        ?>
+
+                        <select  name="at-activity-category">
+                            <?php
+                            foreach ($tax_terms as $tax_term) {
+                                echo '<option value="'. $tax_term->term_id .'">' . $tax_term->name. '</option>';
+                            }
+                            ?>
+                        </select>
+                        <label>Tipul Activitatii</label>
                     </div>
                     <div class="file-field input-field col s6">
                         <div class="btn light-blue accent-4">
                             <span>Adauga imagine</span>
-                            <input type="file" name="fileToUpload[]" required="" aria-required="true" id="fileToUpload">
+                            <input type="file" name="fileToUpload[]" required="" aria-required="true" id="fileToUpload" multiple>
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="img" type="text">
+                            <input class="file-path validate" name="img" type="text" placeholder="Atasati una sau mai multe imagini">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="post_content" name="post_content" required="" aria-required="true" class="materialize-textarea"></textarea>
-                        <label for="post_content">Continut stire</label>
+                        <label for="post_content">Continut Activitate</label>
                     </div>
                 </div>
                 <input type='hidden' value="<?php echo wp_create_nonce( 'save_new_post' ); ?>" name='nonce' />
-                <input type='hidden' value="post" name='post_type' />
+                <input type='hidden' value="atelier_activities" name='post_type' />
                 <input type="hidden" name="action" id="action" value="save_news">
-                <button class="btn waves-effect waves-light  light-blue accent-4" type="submit" >Adauga stire
+                <button class="btn waves-effect waves-light  light-blue accent-4" type="submit" >Adauga Activitate
                     <i class="material-icons right">send</i>
                 </button>
             </form>
         </div>
+
+
         <div class="at-pending-news">
-            <h2>Noutati care asteapta aprobare</h2>
+            <h2>Activitati care asteapta aprobare</h2>
             <?php
             $user = wp_get_current_user();
             $args = array(
@@ -63,7 +84,7 @@
                 'offset'           => 0,
                 'orderby'          => 'date',
                 'order'            => 'DESC',
-                'post_type'        => 'post',
+                'post_type'        => 'atelier_activities',
                 'author'	   => $user->ID,
                 'post_status'      => 'draft',
                 'suppress_filters' => true
@@ -78,14 +99,15 @@
                         <img src="<?php echo $url; ?>" alt="" class="circle">
                         <span class="title"><?php echo $post->post_title; ?></span>
                         <p>
-                            <?php echo substr($post->post_content, 0, 300); ?>
+                            <?php $content = substr($post->post_content, 0, strpos($post->post_content, "<h1>")); ?>
+                            <?php echo substr($content, 0, 300); ?>
                         </p>
                         <a href="#at-delete-news-modal" data-id="<?php echo $post->ID; ?>" class="delete-item-modal modal-trigger lock_open secondary-content light-blue-text text-accent-4"><i class="material-icons">delete</i></a>
                     </li>
                 <?php } ?>
             </ul>
             <div id="at-delete-news-modal" class="at-delete-news-modal modal">
-                <h3 class="center">Sunteti sigur ca vreti sa stergeti aceste stiri ?</h3>
+                <h3 class="center">Sunteti sigur ca vreti sa stergeti aceasta activitate ?</h3>
                 <div class="center">
                     <a id="ta-delete-news" href="javascript:void(0)" class="modal-action modal-close waves-effect waves-light btn light-blue accent-4 " data-id="">Da</a>
                     <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-light btn light-blue accent-4">Nu</a>

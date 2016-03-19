@@ -105,6 +105,8 @@ function theme_atelier_scripts()
     //check if debug is active and create the suffix for the js files
     $js_suffix = defined('WP_DEBUG') && WP_DEBUG ? '.js' : '.min.js';
 
+    //Colorbox stylesheet
+    wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/colorbox/colorbox.css' );
     wp_enqueue_style('theme-atelier-style', get_stylesheet_uri());
 
     wp_enqueue_script('theme-atelier-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true);
@@ -126,7 +128,9 @@ function theme_atelier_scripts()
 
     // add main js
     wp_enqueue_script('jquery');
-        wp_enqueue_script('jquery-form', array('jquery'), false, true);
+    wp_enqueue_script('jquery-form', array('jquery'), false, true);
+    //Colorbox jQuery plugin js file
+    wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/colorbox/jquery.colorbox-min.js', array( 'jquery'   ), '', true );
     wp_enqueue_script('theme-atelier-js', get_template_directory_uri() . '/js/dist/ta-main' . $js_suffix, array('jquery'), '1.0.0', true);
     wp_localize_script('theme-atelier-js', 'ajax_front', array('ajaxurl' => admin_url('admin-ajax.php')));
 
@@ -135,18 +139,17 @@ function theme_atelier_scripts()
     }
 }
 
-add_action( 'admin_menu', 'remove_custom_fields' );
+add_action('wp_enqueue_scripts', 'theme_atelier_scripts');
+
+
 
 function remove_custom_fields() {
     if(defined('WP_DEBUG') && WP_DEBUG === false) {
         remove_menu_page( 'edit.php?post_type=acf-field-group' );
     }
-
 }
 
-
-add_action('wp_enqueue_scripts', 'theme_atelier_scripts');
-
+add_action( 'admin_menu', 'remove_custom_fields' );
 
 function theme_atelier_admin_scripts()
 {

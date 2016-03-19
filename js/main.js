@@ -4,6 +4,31 @@
 
 jQuery(document).ready(function($) {
     $('.modal-trigger').leanModal();
+    $('select').material_select();
+
+
+    /**
+     * Lightbox for Galleries
+     * @type {{rel: string, width: string, height: string, maxWidth: string, maxHeight: string, title: cbSettings.title}}
+     */
+    //Settings for lightbox
+    var cbSettings = {
+        rel: 'cboxElement',
+        width: '95%',
+        height: 'auto',
+        maxWidth: '660',
+        maxHeight: 'auto'
+    };
+
+    //Initialize jQuery Colorbox
+    $('.gallery a[href$=".jpg"], .gallery a[href$=".jpeg"], .gallery a[href$=".png"], .gallery a[href$=".gif"]').colorbox(cbSettings);
+
+    //Keep lightbox responsive on screen resize
+    $(window).on('resize', function() {
+        $.colorbox.resize({
+            width: window.innerWidth > parseInt(cbSettings.maxWidth) ? cbSettings.maxWidth : cbSettings.width
+        });
+    });
 
     /**
      * Change classes of the logout submenu so we can show and hide it
