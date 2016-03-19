@@ -78,7 +78,7 @@ function save_news_action()
     $postarr = array(
         'post_title' => sanitize_text_field($_POST['post_title']),
         'post_content' => esc_textarea($_POST['post_content']),
-        'post_type' => 'post',
+        'post_type' => sanitize_text_field($_POST['post_type']),
     );
 
     $post_id = wp_insert_post ( $postarr, false );
@@ -127,6 +127,31 @@ function delete_post_action()
     }
 
     echo $response->ID;
+
+    die();
+}
+
+add_action('wp_ajax_send_partner_email', 'send_partner_email_action');
+add_action('wp_ajax_nopriv_send_partner_email', 'send_partner_email_action');
+
+function send_partner_email_action () {
+
+    // check the nonce so we know the data is comming from where we want it
+    check_ajax_referer('send_partner_email', $_POST['nonce'], false);
+
+    $subject  = $_POST['subject'];
+    $headers  = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=".get_bloginfo('charset')."" . "\r\n";
+    $headers .= "From: <".$_POST['email'].">" . "\r\n";
+
+    $message = $_POST['first_name'] . " " . $_POST['last_name'] . "\r\n\r\n"  . $_POST['partner_email'];
+
+    $response = wp_mail($_POST['partner_email'], $subject, $message, $headers);
+
+    if($response === false) {
+        echo "false";
+        wp_send_json_error();
+    }
 
     die();
 }

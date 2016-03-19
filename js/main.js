@@ -67,7 +67,6 @@ jQuery(document).ready(function($) {
     $('#at_save_news').ajaxForm({
         url: ajax_front.ajaxurl,
         success: function(response){
-            console.log(response);
             $('#post_title, #post_content, .file-path').val('');
             Materialize.toast('Saved!', 4000, 'green accent-4');
             $('.at-pending-news-list').prepend(response);
@@ -100,6 +99,18 @@ jQuery(document).ready(function($) {
                 Materialize.toast('Deleted!', 4000, 'red accent-4');
             }
         });
+    });
+
+    $('#at_send_email_partner').ajaxForm({
+        url: ajax_front.ajaxurl,
+        success: function(response){
+            $('#first_name, #last_name, #email, #subject, #mesaj').val('');
+            Materialize.toast('Mesajul a fost trimis!', 4000, 'green accent-4');
+        },
+        error: function() {
+            Materialize.toast('Mesajul nu a fost trimis!', 4000, 'red accent-4');
+        }
+
     });
 
 });

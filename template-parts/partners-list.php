@@ -34,7 +34,7 @@
                 foreach($users as $user) { ?>
                     <div class="col s12 m4">
                         <div class="card-panel center-align light-blue accent-4">
-                            <h3 class="white-text at-parner-name"><?php echo $user->display_name; ?></h3>
+                            <h5 class="white-text at-parner-name"><strong><?php echo $user->first_name; ?></strong></h5>
                             <div class="at-partner-logo">
                                 <img src="<?php echo $user->logo; ?>" />
                             </div>

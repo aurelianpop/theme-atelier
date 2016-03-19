@@ -135,6 +135,16 @@ function theme_atelier_scripts()
     }
 }
 
+add_action( 'admin_menu', 'remove_custom_fields' );
+
+function remove_custom_fields() {
+    if(defined('WP_DEBUG') && WP_DEBUG === false) {
+        remove_menu_page( 'edit.php?post_type=acf-field-group' );
+    }
+
+}
+
+
 add_action('wp_enqueue_scripts', 'theme_atelier_scripts');
 
 

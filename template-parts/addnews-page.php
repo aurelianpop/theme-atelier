@@ -47,6 +47,7 @@
                     </div>
                 </div>
                 <input type='hidden' value="<?php echo wp_create_nonce( 'save_new_post' ); ?>" name='nonce' />
+                <input type='hidden' value="post" name='post_type' />
                 <input type="hidden" name="action" id="action" value="save_news">
                 <button class="btn waves-effect waves-light  light-blue accent-4" type="submit" >Adauga stire
                     <i class="material-icons right">send</i>
@@ -54,7 +55,7 @@
             </form>
         </div>
         <div class="at-pending-news">
-            <h2>Stiri care asteapta aprobare</h2>
+            <h2>Noutati care asteapta aprobare</h2>
             <?php
             $user = wp_get_current_user();
             $args = array(
