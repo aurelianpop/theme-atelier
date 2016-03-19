@@ -14,40 +14,41 @@
 </div><!-- #content -->
 
 <div id="at-subscribe-modal" class="at-subscribe-modal modal">
-    <div class="modal-header light-blue accent-4">
+    <div class="modal-header light-blue accent-4 center-align">
         <img class="padding-top10" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
     </div>
-    <div class="modal-icon-container white">
+    <div class="modal-icon-container white center-align">
         <i class="modal-icon tiny material-icons light-blue-text text-accent-4">email</i>
     </div>
     <div>
         <form class="modal-form">
-           Email:<br>
-            <input type="text" class="input-field" name="firstname">
-            <br>
-            <button type="submit" class="button-primary login-button">Submit</button>
+            <div class="input-field">
+                <label for="newsletterEmail">Email</label>
+                <input type="text" class="input-field" name="email" id="newsletterEmail">
+            </div>
+            <button type="submit" class="button-primary submit-button white-text light-blue accent-4">
+                TRIMITE&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
         </form>
-        </div>
+    </div>
 </div>
 <footer id="colophon" class="site-footer white-text" role="contentinfo">
-    <?php if (is_front_page()) { ?>
-        <div class="newsletter-container light-blue accent-4">
-            <div class="container row">
-                <div class="inline-block col s7">
-                    <h4>Afla mai multe despre noi.<span class="font-weight700"> Inscrie-te la newsletter</span></h4>
-                    <p>Lorem ipsum sit amet</p>
-                    <a href="#at-subscribe-modal" class="btn waves-effect waves-light grey darken-3 join-btn modal-trigger lock_open">Abonare</a>
-                </div>
-                <div class="col s1"></div>
-                <div class="col s4">
-                    <?php
-                    $social_links = get_option('atelier_newsletter_image');
-                    echo !empty($social_links['newsletter_img_url']) ? '<img class="newsletter-img z-depth-3 hide-on-small-only" src="' . $social_links['newsletter_img_url'] . '"></img>' : '';
-                    ?>
-                </div>
+    <div class="newsletter-container light-blue accent-4">
+        <div class="container row">
+            <div class="inline-block col s7">
+                <h4>Afla mai multe despre noi.<span class="font-weight700"> Inscrie-te la newsletter</span></h4>
+                <p>Lorem ipsum sit amet</p>
+                <a href="#at-subscribe-modal"
+                   class="btn waves-effect waves-light grey darken-3 join-btn modal-trigger lock_open white-link">Abonare</a>
+            </div>
+            <div class="col s1"></div>
+            <div class="col s4">
+                <?php
+                $social_links = get_option('atelier_newsletter_image');
+                echo !empty($social_links['newsletter_img_url']) ? '<img class="newsletter-img z-depth-3 hide-on-small-only" src="' . $social_links['newsletter_img_url'] . '"></img>' : '';
+                ?>
             </div>
         </div>
-    <?php } ?>
+    </div>
     <div class="footer-partners black-text padding-top30">
         <h4 class="center-align"><span class="font-weight700">Partenerii</span> nostri</h4>
         <div class="container row">

@@ -1,11 +1,8 @@
-$standard_blue: #0091dc;
+$standard_blue: #0091ea;
 $hover_blue: #0083C6;
 $footer_dark_grey: #222222;
 
-//a,a:hover,a:active,a:focus {
-//  color: #fff;
-//}
-
+/*Spacing*/
 .margin0 {
   margin: 0 !important;
 }
@@ -18,8 +15,21 @@ $footer_dark_grey: #222222;
   padding-top: 30px;
 }
 
+.padding-top60 {
+  padding-top: 60px;
+}
+
+.padding-bottom60 {
+  padding-bottom: 60px;
+}
+
 .inline-block {
   display: inline-block;
+}
+
+.align-bottom {
+  display: flex;
+  align-items: flex-end;
 }
 
 /*General font*/
@@ -31,11 +41,14 @@ $footer_dark_grey: #222222;
   font-weight: 800
 }
 
-header {
-  a:visited {
+/*General link*/
+.white-link {
+  &:focus,&:visited,&:active,&:hover {
     color: #fff;
   }
+}
 
+header {
   .menu {
     & > li a {
       padding: 0 5px;
@@ -47,20 +60,16 @@ header {
   .menu-container {
     padding: 0 0 0 3%;
     vertical-align: middle;
+
+    .current-menu-item {
+      background-color: #0a99e3;
+      border: solid 1px #32a4df;
+      border-bottom: solid 1px #fff;
+    }
   }
 
   .menu-item {
     height: 64px;
-  }
-
-  .current-menu-item {
-    background-color: #0a99e3;
-    border: solid 1px #32a4df;
-    border-bottom: solid 1px white;
-
-    & > a {
-      color: white;
-    }
   }
 
   /*Social media icons*/
@@ -71,7 +80,7 @@ header {
       padding: 0;
 
       &:hover {
-        background-color: #0091ea;
+        background-color: $standard_blue;
       }
 
       & > i {
@@ -98,11 +107,7 @@ header {
 
     & > a:hover {
       background-color: #111111;
-      color: white;
-    }
-
-    & > a:active, & > a:focus {
-      color: white;
+      color: #fff;
     }
 
     & > a i {
@@ -134,7 +139,6 @@ header {
     padding-right: 64px;
     clear: both;
     display: block;
-    float: left;
     width: 100%;
 
     & > div ul {
@@ -148,10 +152,6 @@ header {
 
         &:hover {
           background-color: #111111;
-        }
-
-        & > a:hover {
-          color: white;
         }
       }
     }
@@ -183,31 +183,42 @@ header {
 body {
   font-family: 'Open Sans', sans-serif;
 
+  /*HTML elements*/
+  hr {
+    height: 1px !important;
+    margin-left: 0;
+    width: 100px;
+  }
+
+  .input-file-preview {
+    padding: 10px !important;
+  }
+
   .input-field {
     /* label focus color */
-    input[type=text]:focus + label {
-      color: #0091ea;
+    input[type=text]:focus + label, textarea:focus + label {
+      color: $standard_blue !important;
     }
 
     /* label underline focus color */
-    input[type=text]:focus, input[type=password]:focus {
-      border-bottom: 1px solid #0091ea;
-      box-shadow: 0 1px 0 0 #0091ea;
+    input[type=text]:focus, input[type=password]:focus, textarea:focus {
+      border-bottom: 1px solid $standard_blue !important;
+      box-shadow: 0 1px 0 0 $standard_blue !important;
     }
 
     /* valid color */
     input[type=text].valid {
-      border-bottom: 1px solid #0091ea;
-      box-shadow: 0 1px 0 0 #0091ea;
+      border-bottom: 1px solid $standard_blue;
+      box-shadow: 0 1px 0 0 $standard_blue;
     }
     /* invalid color */
     input[type=text].invalid {
-      border-bottom: 1px solid #0091ea;
-      box-shadow: 0 1px 0 0 #0091ea;
+      border-bottom: 1px solid $standard_blue;
+      box-shadow: 0 1px 0 0 $standard_blue;
     }
     /* icon prefix focus color */
     .prefix.active {
-      color: #0091ea;
+      color: $standard_blue;
     }
   }
 
@@ -223,13 +234,12 @@ body {
     }
   }
 
-  /* Login modal styling */
+  /* Modal styling */
   .modal {
     min-height: 300px;
     max-width: 545px;
 
     .modal-header {
-      text-align: center;
       padding-top: 20px;
       padding-bottom: 30px;
     }
@@ -237,7 +247,6 @@ body {
     .modal-icon-container {
       margin: -25px auto;
       padding-top: 5px;
-      text-align: center;
       border-radius: 50%;
       display: block;
       width: 50px;
@@ -265,18 +274,12 @@ body {
         }
       }
 
-      .lost-password {
-        float: right;
-      }
-
-      .login-button {
+      .submit-button {
         box-shadow: none;
         width: 100%;
-        background: $standard_blue;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
-        color: #ffffff;
         font-size: 18px;
         padding: 20px;
         margin-top: 20px;
@@ -358,13 +361,6 @@ body {
           font-size: 18px;
           color: white;
         }
-
-        hr {
-          color: white;
-          height: 1px !important;
-          margin-left: 0;
-          width: 100px;
-        }
       }
     }
 
@@ -393,7 +389,7 @@ body {
 
             &:hover {
               a {
-                color: $hover_blue;
+                color: $hover_blue !important;
               }
             }
           }
@@ -407,6 +403,7 @@ body {
       }
     }
   }
+
   .card-panel {
     .at-partner-logo {
       img {

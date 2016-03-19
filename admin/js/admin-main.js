@@ -22,16 +22,14 @@
         /**
          * Open media library and add logo
          */
-        var frame,
-            metaBox = $('.ta-table-logo'), // Your meta box id here
-            addImgLink = metaBox.find('.upload-custom-img'),
-            delImgLink = metaBox.find( '.delete-custom-img'),
-            imgContainer = metaBox.find( '.custom-img-container'),
-            imgURLInput = metaBox.find( '.partner-logo-url' );
 
         // ADD IMAGE LINK
-        addImgLink.on( 'click', function( event ){
-            event.preventDefault();
+        $('.upload-custom-img').on( 'click', function(e){
+            e.preventDefault();
+
+            var frame;
+            var link = $(e.target);
+            var containerId = '#' + link.parent().attr('data-metaboxid');
 
             // If the media frame already exists, reopen it.
             if ( frame ) {
@@ -41,31 +39,33 @@
 
             // Create a new media frame
             frame = wp.media({
-                title: 'Select or Upload Media Of Your Chosen Persuasion',
+                title: 'Select or Upload Media',
                 button: {
                     text: 'Use this media'
                 },
                 multiple: false  // Set to true to allow multiple files to be selected
             });
 
-
             // When an image is selected in the media frame...
             frame.on( 'select', function() {
+                var imgContainer = $('.custom-img-container', containerId);
+                var delImgLink = $('.delete-custom-img', containerId);
+                var imgURLInput = $('.logo-url', containerId);
 
                 // Get media attachment details from the frame state
                 var attachment = frame.state().get('selection').first().toJSON();
 
                 // Send the attachment URL to our custom image input field.
-                imgContainer.append( '<img src="'+attachment.url+'" alt="" style="max-width:100%;"/>' );
+                $(imgContainer).append( '<img src="' + attachment.url + '" alt="" style="max-width:100%;"/>' );
 
                 // Send the attachment url to our hidden input
-                imgURLInput.val( attachment.url );
+                imgURLInput.val(attachment.url);
 
                 // Hide the add image link
-                addImgLink.addClass( 'hidden' );
+                link.addClass('hidden');
 
                 // Unhide the remove image link
-                delImgLink.removeClass( 'hidden' );
+                delImgLink.removeClass('hidden');
             });
 
             // Finally, open the modal on click
@@ -74,21 +74,22 @@
 
 
         // DELETE IMAGE LINK
-        delImgLink.on( 'click', function( event ){
+        $('.delete-custom-img').on( 'click', function(e){
+            e.preventDefault();
 
-            event.preventDefault();
+            var containerId = '#' + $(e.target).parent().attr('data-metaboxid');
 
             // Clear out the preview image
-            imgContainer.html( '' );
+            $('.custom-img-container', containerId).html('');
 
             // Un-hide the add image link
-            addImgLink.removeClass( 'hidden' );
+            $('.upload-custom-img', containerId).removeClass('hidden');
 
             // Hide the delete image link
-            delImgLink.addClass( 'hidden' );
+            $(e.target).addClass('hidden');
 
             // Delete the image id from the hidden input
-            imgURLInput.val( '' );
+            $('.logo-url', containerId).val( '' );
 
         });
 
@@ -138,7 +139,6 @@
 
             $(this).parent().remove();
         });
-
 
     }
 )( jQuery );

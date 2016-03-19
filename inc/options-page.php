@@ -17,6 +17,7 @@ class AtelierOptions
      */
     private $options;
     private $newsletter_img;
+    private $account_settings;
 
     /**
      * Start up
@@ -50,6 +51,7 @@ class AtelierOptions
         // Set class property
         $this->options = get_option('atelier_social_media_options');
         $this->newsletter_img = get_option('atelier_newsletter_image');
+        $this->account_settings = get_option('atelier_account_setting_image');
         ?>
         <div class="wrap">
             <h2>Atelierul De Fapte Bune Settings</h2>
@@ -90,6 +92,28 @@ class AtelierOptions
             array($this, 'newsletter_img_callback'), // Callback
             'atelier_settings', // Page
             'atelier_newsletter_field' // Section
+        );
+
+        /*Account page*/
+        register_setting(
+            'atelier_option_group',
+            'atelier_account_setting_image',
+            array($this, 'sanitize')
+        );
+
+        add_settings_section(
+            'atelier_account_setting_field', // ID
+            'Account Setting', // Title
+            array($this, 'print_account_setting_info'), // Callback
+            'atelier_settings' // Page
+        );
+
+        add_settings_field(
+            'account_setting_img_url', // ID
+            'Account setting image', // Title
+            array($this, 'account_setting_img_callback'), // Callback
+            'atelier_settings', // Page
+            'atelier_account_setting_field' // Section
         );
 
         /*Social Media*/
@@ -142,6 +166,9 @@ class AtelierOptions
         if (isset($input['newsletter_img_url']))
             $new_input['newsletter_img_url'] = sanitize_text_field($input['newsletter_img_url']);
 
+        if (isset($input['account_setting_img_url']))
+            $new_input['account_setting_img_url'] = sanitize_text_field($input['account_setting_img_url']);
+
         if (isset($input['facebook_link']))
             $new_input['facebook_link'] = sanitize_text_field($input['facebook_link']);
 
@@ -171,15 +198,23 @@ class AtelierOptions
     }
 
     /**
+     * Print the Section text
+     */
+    public function print_account_setting_info()
+    {
+        print 'Please upload an image for account settings page';
+    }
+
+    /**
      * Get the settings option array and print one of its values
      */
     public function newsletter_img_callback()
     {
         ?>
-        <div class="ta-table-logo"><?php
+        <div id="nl-img-cont" class="ta-table-logo"><?php
 
         printf(
-            '<input id="newsletter_img" class="partner-logo-url regular-text" name="atelier_newsletter_image[newsletter_img_url]" type="hidden" value="%s"/>',
+            '<input id="newsletter_img" class="logo-url regular-text" name="atelier_newsletter_image[newsletter_img_url]" type="hidden" value="%s"/>',
             isset($this->newsletter_img['newsletter_img_url']) ? esc_attr($this->newsletter_img['newsletter_img_url']) : ''
         ); ?>
 
@@ -188,20 +223,56 @@ class AtelierOptions
                 <img src="<?php echo $this->newsletter_img['newsletter_img_url'] ?>" alt="" style="max-width:100%;"/>
             <?php endif; ?>
         </div>
-        <p class="hide-if-no-js">
+        <p class="hide-if-no-js" data-metaboxid="nl-img-cont">
             <a class="upload-custom-img <?php if ($this->newsletter_img['newsletter_img_url']) {
                 echo 'hidden';
             } ?>"
                href="">
-                <?php _e('Set Partner Logo') ?>
+                <?php _e('Set newsletter image') ?>
             </a>
             <a class="delete-custom-img <?php if (!$this->newsletter_img['newsletter_img_url']) {
                 echo 'hidden';
             } ?>"
                href="#">
-                <?php _e('Remove Partner Logo') ?>
+                <?php _e('Remove newsletter image') ?>
             </a>
         </p>
+        </div>
+        <?php
+    }
+
+    /**
+     * Get the settings option array and print one of its values
+     */
+    public function account_setting_img_callback()
+    {
+        ?>
+        <div id="ac-img-cont" class="ta-table-logo"><?php
+
+            printf(
+                '<input id="account_setting_img" class="logo-url regular-text" name="atelier_account_setting_image[account_setting_img_url]" type="hidden" value="%s"/>',
+                isset($this->account_settings['account_setting_img_url']) ? esc_attr($this->account_settings['account_setting_img_url']) : ''
+            ); ?>
+
+            <div class="custom-img-container">
+                <?php if ($this->account_settings['account_setting_img_url']) : ?>
+                    <img src="<?php echo $this->account_settings['account_setting_img_url'] ?>" alt="" style="max-width:100%;"/>
+                <?php endif; ?>
+            </div>
+            <p class="hide-if-no-js" data-metaboxid="ac-img-cont" >
+                <a  class="upload-custom-img <?php if ($this->account_settings['account_setting_img_url']) {
+                    echo 'hidden';
+                } ?>"
+                   href="">
+                    <?php _e('Set account setting image') ?>
+                </a>
+                <a class="delete-custom-img <?php if (!$this->account_settings['account_setting_img_url']) {
+                    echo 'hidden';
+                } ?>"
+                   href="#">
+                    <?php _e('Remove account setting image') ?>
+                </a>
+            </p>
         </div>
         <?php
     }

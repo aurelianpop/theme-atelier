@@ -91,7 +91,7 @@ add_filter('authenticate', 'atelier_authenticate_username_password', 30, 3);
  */
 function add_lost_password_link()
 {
-    return '<a class="lost-password" href="' .  get_bloginfo('url') . '/resetare-parola/">Ai uitat parola?</a>';
+    return '<a class="lost-password right" href="' .  get_bloginfo('url') . '/resetare-parola/">Ai uitat parola?</a>';
 }
 
 add_action('login_form_middle', 'add_lost_password_link');

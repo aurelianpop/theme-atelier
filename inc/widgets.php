@@ -13,6 +13,6 @@ if (function_exists('register_sidebar')) {
         'before_widget' => '<div id="%1$s" class="widget col s12 m3 %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3>',
-        'after_title' => '</h3><hr />',
+        'after_title' => '</h3><hr class="white-text" />',
     ));
 }

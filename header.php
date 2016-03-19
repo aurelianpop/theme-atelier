@@ -21,11 +21,11 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="at-login-modal" class="at-login-modal modal">
+<div id="at-login-modal" class="at-login-modal modal center-align">
     <div class="modal-header light-blue accent-4">
         <img class="padding-top10" src="<?php echo get_template_directory_uri(); ?>/img/logo.png"/>
     </div>
-    <div class="modal-icon-container white">
+    <div class="modal-icon-container white center-align">
         <i class="modal-icon tiny material-icons light-blue-text text-accent-4">lock</i>
     </div>
 
@@ -66,7 +66,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
 
     <header id="masthead" class="site-header" role="banner">
         <nav id="site-navigation" class="main-navigation" role="navigation">
-            <div class="nav-wrapper menu-container light-blue accent-4">
+            <div class="nav-wrapper menu-container light-blue accent-4 valign">
 
                 <!-- Toggle button -->
                 <a id="side_navigation_button" href="#" data-activates="mobile-demo"
@@ -84,12 +84,12 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                 <!-- Logout -->
                 <?php if (!is_user_logged_in()) { ?>
                     <div class="logon-container at-login right grey darken-3">
-                        <a class="waves-effect waves-light modal-trigger lock_open center-align" href="#at-login-modal"><i
+                        <a class="waves-effect waves-light modal-trigger lock_open center-align white-link" href="#at-login-modal"><i
                                 class="large material-icons">account_circle</i></a>
                     </div>
                 <?php } else { ?>
                     <div class="logon-container at-logout right grey darken-3">
-                        <a class="waves-effect waves-light center-align" href="javascript:void(0)"><i
+                        <a class="waves-effect waves-light center-align white-link" href="javascript:void(0)"><i
                                 class="large material-icons">account_circle</i></a>
                         <ul class="logout-menu ta-inactive">
                             <li><a class="waves-effect waves-light"
@@ -121,7 +121,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
 
         <!-- Submenu -->
         <?php if (is_user_logged_in()) { ?>
-            <nav id="site-sub-navigation" class="grey darken-3 sub-menu-bar" role="navigation">
+            <nav id="site-sub-navigation" class="grey darken-3 sub-menu-bar left" role="navigation">
                 <?php $user = wp_get_current_user();
                 if (in_array('partner', $user->roles)) {
                     wp_nav_menu(array('container_class' => 'right', 'theme_location' => 'partner', 'menu_id' => 'partner-menu', 'walker' => new Atelier_Walker()));

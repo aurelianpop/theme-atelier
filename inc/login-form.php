@@ -38,7 +38,7 @@ function at_wp_login_form( $args = array() ) {
 			' . apply_filters( 'login_form_middle', '' ) . '
 			' . ( $args['remember'] ? '<p class="login-remember"><input class="remember-me-text" name="rememberme" type="checkbox" id="' . esc_attr( $args['id_remember'] ) . '" value="forever" tabindex="90"' . ( $args['value_remember'] ? ' checked="checked"' : '' ) . ' /> <label for="'. esc_attr( $args['id_remember'] ) .'">' . esc_html( $args['label_remember'] ) . '</label></p>' : '' ) . '
 			<p class="login-submit">
-				<button type="submit" name="wp-submit" id="' . esc_attr( $args['id_submit'] ) . '" class="button-primary login-button " tabindex="100">'. esc_attr( $args['label_log_in'] ) . '&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
+				<button type="submit" name="wp-submit" id="' . esc_attr( $args['id_submit'] ) . '" class="button-primary submit-button white-text light-blue accent-4" tabindex="100">'. esc_attr( $args['label_log_in'] ) . '&nbsp&nbsp<i class="fa fa-chevron-right"></i></button>
 				<input type="hidden" name="redirect_to" value="' . esc_attr( $args['redirect'] ) . '" />
 			</p>
 			' . apply_filters( 'login_form_bottom', '' ) . '

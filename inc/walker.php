@@ -52,7 +52,7 @@ class Atelier_Walker extends Walker_Nav_Menu  {
          * @param int    $depth   Depth of menu item. Used for padding.
          */
         $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
-        $class_names .= ' waves-effect waves-light';
+        $class_names .= ' waves-effect waves-light white-link';
         $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
         /**
