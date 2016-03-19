@@ -23,6 +23,7 @@
 				'after'  => '</div>',
 			) );
 		?>
+		<?php ?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">

@@ -73,16 +73,13 @@ jQuery(document).ready(function($) {
      */
     $('#at_save_settings').ajaxForm({
         url: ajax_front.ajaxurl,
-        beforeSubmit: function () {
-            $('#output').html('Saving ...');
-        },
         success: function(response){
             //TODO: put timeout here
-            $('#output').html('Saved');
+            Materialize.toast('Saved!', 4000, 'green accent-4');
             $('#ta-partner-logo').attr('src', response);
         },
         error: function() {
-            $('#output').html('Something went wrong');
+            Materialize.toast('Saved!', 4000, 'red accent-4');
         }
     });
 

@@ -139,10 +139,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
         if (is_front_page()) {
             echo do_shortcode('[rev_slider home]');
         } else {
-
-            if (!is_page_template('settings-page.php')) {
                 echo do_shortcode('[rev_slider pages-slider]');
-            }
         } ?>
     </div>
 

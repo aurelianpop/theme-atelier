@@ -107,7 +107,7 @@
 
                 <input type='hidden' value="<?php echo wp_create_nonce('save_user_data'); ?>" name='nonce'/>
                 <input type="hidden" name="action" id="action" value="save_user_settings">
-                <button class="btn waves-effect waves-light  light-blue accent-4" type="submit">Submit
+                <button class="btn waves-effect waves-light  light-blue accent-4" type="submit">Actualizeaza
                     <i class="material-icons right">send</i>
                 </button>
 
