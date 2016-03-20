@@ -267,6 +267,7 @@ add_filter( 'comment_form_defaults', function ($defaults) {
     $defaults['label_submit'] = __( 'Postati Comentariul' );
 
     $defaults['logged_in_as'] = '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" aria-label="Inregistrat ca %2$s. Editati Profilul.">Inregistrat ca %2$s</a>. <a href="%3$s">Deconectare?</a>' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>';
+    $defaults['must_log_in'] = '<p class="must-log-in">' . __( 'Trebuie sa fiti inregistrat pentru a posta un comentariu.' ) . '</p>';
 
 
     return $defaults;
