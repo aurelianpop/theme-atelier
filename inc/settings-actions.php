@@ -108,7 +108,7 @@ function save_news_action()
     require_once(ABSPATH . "wp-admin" . '/includes/file.php');
     require_once(ABSPATH . "wp-admin" . '/includes/media.php');
     //then loop over the files that were sent and store them using  media_handle_upload();
-    $img_array = [];
+    $img_array = array();
     $_FILES = reArrayFiles($_FILES['fileToUpload']);
 
     if ($_FILES) {
