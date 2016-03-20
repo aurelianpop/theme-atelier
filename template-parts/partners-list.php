@@ -33,15 +33,15 @@
             if(!empty($users)) {
                 foreach($users as $user) { ?>
                     <div class="col s12 m4">
-                        <div class="card-panel center-align light-blue accent-4">
-                            <h5 class="white-text at-parner-name"><strong><?php echo $user->first_name; ?></strong></h5>
+                        <div class="card-panel hoverable center-align grey lighten-4">
+                            <h5 class="at-parner-name"><strong><?php echo $user->first_name; ?></strong></h5>
                             <div class="at-partner-logo">
                                 <img src="<?php echo $user->logo; ?>" />
                             </div>
-                            <h5 class="white-text">Persoana de Contact:</h5>
-                            <p class="white-text">Nume: <?php echo $user->contact_name; ?></p>
-                            <p class="white-text">Prenume: <?php echo $user->contact_surname; ?></p>
-                            <p class="white-text">Telefon: <?php echo $user->contact_phone; ?></p>
+                            <h5>Persoana de Contact:</h5>
+                            <p>Nume: <?php echo $user->contact_name; ?></p>
+                            <p>Prenume: <?php echo $user->contact_surname; ?></p>
+                            <p>Telefon: <?php echo $user->contact_phone; ?></p>
                             <br/><br/>
                             <?php $pages = get_pages(array(
                                 'number' => 1,
@@ -52,7 +52,7 @@
                             <div class="card-action">
                                 <?php
                                 foreach($pages as $page){ ?>
-                                    <a class="waves-effect waves-light btn white light-blue-text text-accent-4" href="<?php echo esc_url( get_permalink( $page->ID ) ) . '?partner=' . $user->ID; ?>">mai mult ...</a>
+                                    <a class="waves-effect waves-light btn white-text light-blue accent-4" href="<?php echo esc_url( get_permalink( $page->ID ) ) . '?partner=' . $user->ID; ?>">mai mult ...</a>
                                 <?php } ?>
                             </div>
                         </div>

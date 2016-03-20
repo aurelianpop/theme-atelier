@@ -51,8 +51,7 @@
                     </div>
                 <?php }
             }
-
-            //var_dump($user->children); ?>
+            ?>
 
         </div>
     </div><!-- .entry-content -->

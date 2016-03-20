@@ -40,4 +40,9 @@
                 </div>
             </div>
         </div>
+    <?php
+    wp_link_pages( array(
+    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'theme-atelier' ),
+        'after'  => '</div>',
+    ) ); ?>
 </article><!-- #post-## -->

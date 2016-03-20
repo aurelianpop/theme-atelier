@@ -477,7 +477,7 @@ body {
   }
 
 
-  &.archive {
+  &.archive, &.blog {
     .card {
       min-height: 650px;
       .card-image {
