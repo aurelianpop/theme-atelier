@@ -476,4 +476,22 @@ body {
     }
   }
 
+
+  &.archive {
+    .card {
+      min-height: 650px;
+      .card-image {
+        max-height: 220px;
+        overflow: hidden;
+      }
+      .card-action {
+        position: absolute;
+        bottom: 0;
+        width:100%;
+      }
+      .card-content {
+        padding-bottom: 80px;
+      }
+    }
+  }
 }
