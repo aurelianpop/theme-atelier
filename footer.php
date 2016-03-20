@@ -51,7 +51,7 @@
     </div>
     <div class="footer-partners black-text padding-top30">
         <h4 class="center-align"><span class="font-weight700">Partenerii</span> nostri</h4>
-        <div class="container row">
+        <div class="container row valign-wrapper">
             <?php
             $partners = get_users('role=Partner');
             $partner_logos = array();
@@ -63,12 +63,12 @@
             if (count($partner_logos) > 4) {
                 $partner_keys = array_rand($partner_logos, 4);
                 foreach ($partner_keys as $key) {
-                    echo '<div class="col s12 m3 center-align"><img class="partner-logo" src="' . $partner_logos[$key]->logo . '"></img></div>';
+                    echo '<div class="col s12 m3 center-align valign"><img class="partner-logo" src="' . $partner_logos[$key]->logo . '"></img></div>';
                 }
             } else {
                 if ($partner_logos) {
                     foreach ($partner_logos as $partner) {
-                        echo '<div class="col s12 m3 center-align"><img class="partner-logo" src="' . $partner->logo . '"></img></div>';
+                        echo '<div class="col s12 m3 center-align valign"><img class="partner-logo" src="' . $partner->logo . '"></img></div>';
                     }
                 }
             }

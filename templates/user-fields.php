@@ -134,7 +134,7 @@
          */
         if((is_object($user) && in_array('partner', $user->roles)) || (is_object($user) && in_array('administrator', $user->roles)) || !is_object($user)) {
             ?>
-            <tr class="ta-table-logo">
+            <tr id="pt-logo-cont" class="ta-table-logo">
                 <th><label for="logo">Logo</label></th>
 
                 <td>
@@ -148,7 +148,7 @@
                         <?php endif; ?>
                     </div>
                     <!-- Your add & remove image links -->
-                    <p class="hide-if-no-js">
+                    <p class="hide-if-no-js" data-metaboxid="pt-logo-cont">
                         <a class="upload-custom-img <?php if ( $src  ) { echo 'hidden'; } ?>"
                            href="">
                             <?php _e('Set Partner Logo') ?>
@@ -159,7 +159,7 @@
                         </a>
                     </p>
                     <!-- A hidden input to set and post the chosen image id -->
-                    <input class="partner-logo-url" name="logo" type="hidden" value="<?php echo esc_attr( $src ); ?>"
+                    <input class="logo-url" name="logo" type="hidden" value="<?php echo esc_attr( $src ); ?>"
 
                 </td>
             </tr>

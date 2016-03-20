@@ -8,7 +8,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article class="container" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">
         <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
     </header><!-- .entry-header -->
@@ -91,7 +91,7 @@
                             <div class="input-field col s12">
                                 <input id="contact_phone" type="text" name="contact_phone"
                                        value="<?php echo get_user_meta($user->ID, 'contact_phone', true) ?>"
-                                       class="validate">
+                                       class="validate at-phone-type-field">
                                 <label for="contact_phone">Telefon</label>
                             </div>
                         </div>

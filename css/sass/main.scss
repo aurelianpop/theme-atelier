@@ -7,6 +7,14 @@ $footer_dark_grey: #222222;
   margin: 0 !important;
 }
 
+.padding-right30{
+  padding-right: 30px;
+}
+
+.padding-top5 {
+  padding-top: 5px;
+}
+
 .padding-top10 {
   padding-top: 10px;
 }
@@ -45,6 +53,12 @@ $footer_dark_grey: #222222;
 .white-link {
   &:focus,&:visited,&:active,&:hover {
     color: #fff;
+  }
+}
+
+.blue-link {
+  &:focus,&:visited,&:active,&:hover {
+    color: #0091ea;
   }
 }
 
@@ -236,7 +250,6 @@ body {
 
   /* Modal styling */
   .modal {
-    min-height: 300px;
     max-width: 545px;
 
     .modal-header {
@@ -289,6 +302,10 @@ body {
           background: $hover_blue;
         }
       }
+    }
+
+    .modal-action {
+      margin-right: 10px !important;
     }
   }
 
@@ -418,4 +435,45 @@ body {
       font-weight: 800;
     }
   }
+
+  /*Toast styling*/
+  #toast-container {
+    right: 3%;
+  }
+
+  .toast {
+    &.large{
+      max-width: 300px;
+      padding: 30px;
+    }
+  }
+
+  /*Card*/
+  .card {
+    &:hover {
+      box-shadow: 0 4px 10px 0;
+    }
+
+    .card-image {
+      height: 240px;
+      overflow: hidden;
+    }
+  }
+
+  /*ID specific*/
+  #at-news {
+    .collection {
+      margin-top: 28px;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+
+      li a p:last-child {
+        padding-bottom: 9px;
+      }
+
+      .collection-item:hover {
+        background-color: #eeeeee;
+      }
+    }
+  }
+
 }

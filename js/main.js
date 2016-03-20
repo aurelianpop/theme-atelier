@@ -53,6 +53,19 @@ jQuery(document).ready(function($) {
     });
 
     /**
+     * Input field for phone number
+     */
+    $(".at-phone-type-field").keydown(function(event) {
+        // Allow only backspace and delete
+        if ( event.keyCode != 46 && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 39  ) {
+            if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105))) {
+                event.preventDefault();
+            }
+        }
+
+    });
+
+    /**
      * Hide logout from menu when side nav is visible
      */
     if($('#side_navigation_button').is(':visible'))
@@ -90,12 +103,11 @@ jQuery(document).ready(function($) {
         url: ajax_front.ajaxurl,
         success: function(response){
             $('#post_title, #post_content, .file-path').val('');
-            Materialize.toast('Saved!', 4000, 'green accent-4');
+            Materialize.toast('Stirea a fost salvata cu success!', 4000, 'large green accent-4');
             $('.at-pending-news-list').prepend(response);
         },
         error: function() {
-            Materialize.toast('Saved!', 4000, 'red accent-4');
-            //$('#output').html('Something went wrong');
+            Materialize.toast('Stirea nu a fost salvata!', 4000, 'large red accent-4');
         }
     });
 
@@ -118,7 +130,7 @@ jQuery(document).ready(function($) {
             if(response) {
                 var item = '.at-news-item-' + id;
                 $(item).remove();
-                Materialize.toast('Deleted!', 4000, 'red accent-4');
+                Materialize.toast('Stirea a fost stearsa!', 4000, 'large red accent-4');
             }
         });
     });
@@ -127,10 +139,10 @@ jQuery(document).ready(function($) {
         url: ajax_front.ajaxurl,
         success: function(response){
             $('#first_name, #last_name, #email, #subject, #mesaj').val('');
-            Materialize.toast('Mesajul a fost trimis!', 4000, 'green accent-4');
+            Materialize.toast('Mesajul a fost trimis!', 4000, 'large green accent-4');
         },
         error: function() {
-            Materialize.toast('Mesajul nu a fost trimis!', 4000, 'red accent-4');
+            Materialize.toast('Mesajul nu a fost trimis!', 4000, 'large red accent-4');
         }
 
     });
