@@ -52,6 +52,13 @@ add_filter( 'comment_form_default_fields', function ($fields) {
     return $fields;
 });
 
+/**
+ * New romanian texts callback for wp_list_comments()
+ *
+ * @param $comment
+ * @param $args
+ * @param $depth
+ */
 function comments_callback($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment; ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
