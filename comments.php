@@ -28,7 +28,7 @@ if ( post_password_required() ) {
 		<h2 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'theme-atelier' ) ),
+					esc_html( _nx( 'Un raspuns la &ldquo;%2$s&rdquo;', '%1$s raspunsuri la &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'theme-atelier' ) ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);
@@ -78,8 +78,8 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'theme-atelier' ); ?></p>
 	<?php
 	endif;
-
-	comment_form();
+	$form_args = array( 'title_reply', 'Lasati un comentariu' );
+	comment_form( $form_args );
 	?>
 
 </div><!-- #comments -->

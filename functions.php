@@ -253,3 +253,21 @@ function at_metabox_menu_posttype_archive() {
 
     endif;
 }
+
+
+add_filter( 'comment_form_defaults', function ($defaults) {
+
+    $user = wp_get_current_user();
+    $user_identity = $user->exists() ? $user->display_name : '';
+    $post_id = get_the_ID();
+
+    $defaults['title_reply'] = __( 'Lasati un comentariu' );
+    $defaults['title_reply_to'] = __( 'Lasati un comentariu la %s' );
+    $defaults['cancel_reply_link'] = __( 'Anulati comentariul' );
+    $defaults['label_submit'] = __( 'Postati Comentariul' );
+
+    $defaults['logged_in_as'] = '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" aria-label="Inregistrat ca %2$s. Editati Profilul.">Inregistrat ca %2$s</a>. <a href="%3$s">Deconectare?</a>' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>';
+
+
+    return $defaults;
+});

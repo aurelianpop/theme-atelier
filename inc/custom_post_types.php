@@ -74,9 +74,9 @@ function ta_custom_posts_init() {
         'rewrite'            => array( 'slug' => 'activities' ),
         'capability_type'    => 'post',
         'has_archive'        => true,
-        'hierarchical'       => false,
+        'hierarchical'       => true,
         'menu_position'      => null,
-        'supports'           => array( 'title', 'editor', 'thumbnail' )
+        'supports'           => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions' )
     );
 
     register_post_type( 'atelier_activities', $args );
@@ -110,7 +110,7 @@ function ta_custom_posts_init() {
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => null,
-        'supports'           => array( 'title', 'editor', 'thumbnail' )
+        'supports'           => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions' )
     );
 
     register_post_type( 'atelier_causes', $args );

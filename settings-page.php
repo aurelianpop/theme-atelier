@@ -15,7 +15,7 @@ get_header(); ?>
 
                 if ( in_array( 'partner', $user->roles ) ) {
                     get_template_part( 'template-parts/settings', 'partners' );
-                } else if ( in_array( 'partner', $user->roles ) ) {
+                } else if ( in_array( 'parent', $user->roles ) ) {
                     get_template_part( 'template-parts/settings', 'parents' );
                 }
 

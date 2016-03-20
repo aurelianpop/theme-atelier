@@ -61,7 +61,7 @@ function theme_atelier_entry_footer() {
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'theme-atelier' ), esc_html__( '1 Comment', 'theme-atelier' ), esc_html__( '% Comments', 'theme-atelier' ) );
+		comments_popup_link( esc_html__( 'Lasati un comentariu', 'theme-atelier' ), esc_html__( '1 Comentariu', 'theme-atelier' ), esc_html__( '% Comentarii', 'theme-atelier' ) );
 		echo '</span>';
 	}
 }

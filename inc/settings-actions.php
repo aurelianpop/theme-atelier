@@ -58,7 +58,21 @@ function save_user_settings_action()
     }
 
     if (in_array('parent', $user->roles)) {
-        //Do parent save
+        $args = array(
+            'ID' => $user->ID,
+            'first_name' => sanitize_text_field($_POST['first_name']),
+            'last_name' => sanitize_text_field($_POST['last_name']),
+        );
+
+        wp_update_user($args);
+        update_user_meta($user->ID, 'phone', sanitize_text_field($_POST['phone']));
+        update_user_meta($user->ID, 'cnp', sanitize_text_field($_POST['cnp']));
+        update_user_meta($user->ID, 'address', sanitize_text_field($_POST['address']));
+        update_user_meta($user->ID, 'help', sanitize_text_field($_POST['help']));
+        update_user_meta($user->ID, 'job', sanitize_text_field($_POST['job']));
+        update_user_meta($user->ID, 'has_children', sanitize_text_field($_POST['has_children']));
+        update_user_meta($user->ID, 'married', sanitize_text_field($_POST['married']));
+        update_user_meta($user->ID, 'anonymus', sanitize_text_field($_POST['anonymus']));
         echo('Saved');
         die();
     }

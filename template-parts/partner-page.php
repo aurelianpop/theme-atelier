@@ -42,38 +42,6 @@ $user = get_user_by('ID', $partner_id);
                 <p>Telefon: <?php echo $user->contact_phone; ?></p>
                 <p>Functie: <?php echo $user->contact_function; ?></p>
 
-                <h3>Acivitati sponsorizate de acest partener</h3>
-                <?php
-                $args = array(
-                    'numberposts' => -1,
-                    'offset' => 0,
-                    'orderby' => 'date',
-                    'order' => 'DESC',
-                    'post_type' => 'atelier_activities',
-                    'author' => $user->ID,
-                    'post_status' => 'publish',
-                    'suppress_filters' => true
-                );
-                $posts_array = get_posts($args);
-                ?>
-                <?php if ($posts_array) { ?>
-                    <ul class="at-pending-news-list collection">
-                        <?php foreach ($posts_array as $post) {
-                            $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
-                            ?>
-                            <li class="at-news-item-<?php echo $post->ID; ?> collection-item avatar">
-                                <img src="<?php echo $url; ?>" alt="" class="circle">
-                                <span class="title"><?php echo $post->post_title; ?></span>
-                                <p>
-                                    <?php $content = substr($post->post_content, 0, strpos($post->post_content, "<")); ?>
-                                    <?php echo substr($content, 0, 300); ?>
-                                </p>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                <?php } else { ?>
-                    <p>Acest partener nu a adaugat nici o activitate.</p>
-                <?php } ?>
             </div>
             <div class="at-partner-form  col m4 s12">
                 <div class="row">
@@ -119,6 +87,42 @@ $user = get_user_by('ID', $partner_id);
                         </div>
                     </form>
                     <div id="result"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12">
+                    <h3>Acivitati sponsorizate de acest partener</h3>
+                    <?php
+                    $args = array(
+                        'numberposts' => -1,
+                        'offset' => 0,
+                        'orderby' => 'date',
+                        'order' => 'DESC',
+                        'post_type' => 'atelier_activities',
+                        'author' => $user->ID,
+                        'post_status' => 'publish',
+                        'suppress_filters' => true
+                    );
+                    $posts_array = get_posts($args);
+                    ?>
+                    <?php if ($posts_array) { ?>
+                        <ul class="at-pending-news-list collection">
+                            <?php foreach ($posts_array as $post) {
+                                $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+                                ?>
+                                <li class="at-news-item-<?php echo $post->ID; ?> collection-item avatar">
+                                    <img src="<?php echo $url; ?>" alt="" class="circle">
+                                    <a href="<?php echo $post->guid; ?>"><h4><?php echo $post->post_title; ?></h4></a>
+                                    <p>
+                                        <?php $content = substr($post->post_content, 0, strpos($post->post_content, "<")); ?>
+                                        <?php echo substr($content, 0, 300); ?>
+                                    </p>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    <?php } else { ?>
+                        <p>Acest partener nu a adaugat nici o activitate.</p>
+                    <?php } ?>
                 </div>
             </div>
         </div>
