@@ -52,6 +52,8 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'reply_text' => 'Raspunde',
+					'callback'   => 'comments_callback',
 				) );
 			?>
 		</ol><!-- .comment-list -->
