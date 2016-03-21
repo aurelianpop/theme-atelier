@@ -92,7 +92,7 @@
                             <li class="collection-item avatar">
                                 <a class="blue-link" href="<?php echo $news->guid ?>">
                                     <?php echo !empty($img_url) ? '<img class="circle" src="' . $img_url . '"/>' : '' ?>
-                                    <h6 class="title"><?php echo $news->post_title ?></h6>
+                                    <h6 class="title truncate"><?php echo $news->post_title ?></h6>
                                     <p class="grey-text text-accent-4"><?php echo date($dateFormat, $date) ?></p>
                                     <p class="truncate padding-top30"><?php echo $news->post_content ?></p>
                                 </a>
