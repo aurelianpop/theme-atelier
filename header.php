@@ -134,12 +134,17 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
         <?php } ?>
 
     </header><!-- #masthead -->
-    <div id="top">
+    <div id="top" class="<?php echo is_single() ? 'top-single-post' : '' ?>">
         <?php
         if (is_front_page()) {
             echo do_shortcode('[rev_slider home]');
         } else {
+            if(is_single()) {
+                $feature_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+                <img src="<?php echo $feature_image ?>"/>
+            <?php } else {
                 echo do_shortcode('[rev_slider pages-slider]');
+            }
         } ?>
     </div>
 

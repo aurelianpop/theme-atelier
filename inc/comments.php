@@ -22,7 +22,7 @@ add_filter( 'comment_form_defaults', function ($defaults) {
     $defaults['cancel_reply_link'] = __( 'Anulati comentariul' );
     $defaults['label_submit'] = __( 'Postati Comentariul' );
 
-    $defaults['logged_in_as'] = '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" aria-label="Inregistrat ca %2$s. Editati Profilul.">Inregistrat ca %2$s</a>. <a href="%3$s">Deconectare?</a>' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>';
+    $defaults['logged_in_as'] = '<p class="logged-in-as">' . sprintf( __( '<a class="blue-link" href="%1$s" aria-label="Inregistrat ca %2$s. Editati Profilul.">Inregistrat ca %2$s</a>. <a class="blue-link" href="%3$s">Deconectare?</a>' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>';
     $defaults['must_log_in'] = '<p class="must-log-in">' . __( 'Trebuie sa fiti inregistrat pentru a posta un comentariu.' ) . '</p>';
     $defaults['comment_notes_before'] = '<p class="comment-notes"><span id="email-notes">' . __( 'Emailul dumneavoastra nu va fi public' ) . '</span>'. ( $req ? $required_text : '' ) . '</p>';
     $defaults['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . _x( 'Comentariu', 'noun' ) . '</label> <textarea id="comment" name="comment" cols="45" rows="8"  aria-required="true" required="required"></textarea></p>';

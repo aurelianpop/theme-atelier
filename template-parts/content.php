@@ -14,7 +14,7 @@
 	$feature_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
 	<div class="col s12 m4">
 		<div class="card hoverable">
-			<div class="card-image truncate">
+			<div class="card-image truncate blue-link">
 				<a href="<?php echo get_permalink($post->ID); ?>"> <img src="<?php echo $feature_image ?>"/></a>
 			</div>
 			<div class="card-content">

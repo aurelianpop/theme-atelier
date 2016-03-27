@@ -476,7 +476,16 @@ body {
     }
   }
 
-
+  .top-single-post {
+    height: 300px;
+    overflow-y: hidden;
+    img {
+      width: 100%;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
   &.archive, &.blog {
     .card {
       min-height: 650px;

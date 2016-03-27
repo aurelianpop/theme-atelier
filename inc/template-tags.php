@@ -26,7 +26,7 @@ function theme_atelier_posted_on() {
 
 	$posted_on = sprintf(
 		esc_html_x( 'Adaugat in %s', 'post date', 'theme-atelier' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		'<a class="blue-link" href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
