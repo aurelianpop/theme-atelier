@@ -20,7 +20,7 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area padding-top10">
 
 	<?php
 	// You can start editing here -- including this comment!
@@ -34,7 +34,7 @@ if ( post_password_required() ) {
 				);
 			?>
 		</h2>
-
+		<hr class="blue accent-4"/>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
 			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'theme-atelier' ); ?></h2>
@@ -70,7 +70,8 @@ if ( post_password_required() ) {
 		</nav><!-- #comment-nav-below -->
 		<?php
 		endif; // Check for comment navigation.
-
+	else:
+		?> <h2>Comentarii</h2><hr class="blue accent-4"/><p>Momentan nu exista nici un comentariu.</p><?php
 	endif; // Check for have_comments().
 
 

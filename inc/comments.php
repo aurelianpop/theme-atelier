@@ -17,15 +17,18 @@ add_filter( 'comment_form_defaults', function ($defaults) {
     $req      = get_option( 'require_name_email' );
     $required_text = sprintf( ' ' . __('Campurile obligatorii sunt marcate cu %s'), '<span class="required">*</span>' );
 
-    $defaults['title_reply'] = __( 'Lasati un comentariu' );
+    $defaults['title_reply_before'] = __( '<h4 id="reply-title" class="comment-reply-title margin0">' );
+    $defaults['title_reply_after'] = __( '</h4>' );
+    $defaults['title_reply'] = __( 'Lasati un comentariu ' );
     $defaults['title_reply_to'] = __( 'Lasati un comentariu la %s' );
     $defaults['cancel_reply_link'] = __( 'Anulati comentariul' );
     $defaults['label_submit'] = __( 'Postati Comentariul' );
+    $defaults['submit_button'] = __( '<button name="%1$s" type="submit" id="%2$s" class="%3$s btn  light-blue accent-4" value="%4$s">%4$s<i class="material-icons right">send</i></button>' );
 
-    $defaults['logged_in_as'] = '<p class="logged-in-as">' . sprintf( __( '<a class="blue-link" href="%1$s" aria-label="Inregistrat ca %2$s. Editati Profilul.">Inregistrat ca %2$s</a>. <a class="blue-link" href="%3$s">Deconectare?</a>' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>';
+    $defaults['logged_in_as'] = '<p class="logged-in-as margin0">' . sprintf( __( 'Inregistrat ca <span class="font-weight700">%2$s</span>. <a class="blue-link" href="%3$s">Deconectare?</a>' ), get_edit_user_link(), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>';
     $defaults['must_log_in'] = '<p class="must-log-in">' . __( 'Trebuie sa fiti inregistrat pentru a posta un comentariu.' ) . '</p>';
     $defaults['comment_notes_before'] = '<p class="comment-notes"><span id="email-notes">' . __( 'Emailul dumneavoastra nu va fi public' ) . '</span>'. ( $req ? $required_text : '' ) . '</p>';
-    $defaults['comment_field'] = '<p class="comment-form-comment"><label for="comment">' . _x( 'Comentariu', 'noun' ) . '</label> <textarea id="comment" name="comment" cols="45" rows="8"  aria-required="true" required="required"></textarea></p>';
+    $defaults['comment_field'] = '<div class="comment-form-comment"><div class="input-field"><textarea id="comment" class="materialize-textarea" name="comment" aria-required="true" required="required"></textarea><label class="comment-label" for="comment">' . _x( 'Comentariu', 'noun' ) . '</label> </div></div>';
 
 
     return $defaults;
@@ -41,12 +44,18 @@ add_filter( 'comment_form_default_fields', function ($fields) {
     $html5    = 'html5' === $args['format'];
 
     $fields   =  array(
-        'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Nume' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-            '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . $html_req . ' /></p>',
-        'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-            '<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></p>',
-        'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label> ' .
-            '<input id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
+        'author' => '<div class="comment-form-author"><div class="input-field">' .
+            '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . $html_req . ' />' .
+            '<label for="author">' . __( 'Nume' ) . ( $req ? ' <span class="required">*</span>' : '' ) .
+            '</label></div></div>',
+        'email'  => '<div class="comment-form-email"><div class="input-field">' .
+            '<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" aria-describedby="email-notes"' . $aria_req . $html_req  . ' />' .
+            '<label for="email">' . __( 'Email' ) . ( $req ? ' <span class="required">*</span>' : '' ) .
+            '</label></div></div>',
+        'url'    => '<div class="comment-form-url"><div class="input-field">'.
+            '<input id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
+            '<label for="url">' . __( 'Website' ) .
+            '</label></div></div>',
     );
 
     return $fields;

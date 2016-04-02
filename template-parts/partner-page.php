@@ -111,10 +111,12 @@ $user = get_user_by('ID', $partner_id);
                                 <input type="hidden" name="partner_email" value="<?php echo $user->user_email; ?>">
                                 <input type="hidden" name="action" id="action" value="send_partner_email">
                                 <div class="row">
-                                    <button class="btn waves-effect waves-light light-blue accent-4" type="submit"
-                                            name="submit">Trimite
-                                        <i class="material-icons right">send</i>
-                                    </button>
+                                    <div class="col s12">
+                                        <button class="btn waves-effect waves-light light-blue accent-4" type="submit"
+                                                name="submit">Trimite
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                             <div id="result"></div>

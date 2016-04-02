@@ -31,7 +31,7 @@ function theme_atelier_posted_on() {
 
 	$byline = sprintf(
 		esc_html_x( 'de catre %s', 'post author', 'theme-atelier' ),
-		'<span class="author vcard"><strong>' . esc_html( get_the_author() ) . '</strong></span>'
+		'<span class="author vcard font-weight700">' . esc_html( get_the_author() ) . '</span>'
 	);
 
 	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
