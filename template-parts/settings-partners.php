@@ -8,7 +8,7 @@
  */
 ?>
 
-<article class="container" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">
         <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
     </header><!-- .entry-header -->
@@ -27,7 +27,7 @@
             <form id="at_save_settings" action="" method="post" enctype="multipart/form-data">
                 <h2>Companie</h2>
                 <hr class="light-blue accent-4"/>
-                <div class="row align-bottom">
+                <div class="row flex flex-align-bottom">
                     <div class="input-file-preview col s2">
                         <?php $logo = get_user_meta($user->ID, 'logo', true);
                         if ($logo) { ?>

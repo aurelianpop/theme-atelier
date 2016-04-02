@@ -141,7 +141,11 @@ function theme_atelier_scripts()
 
 add_action('wp_enqueue_scripts', 'theme_atelier_scripts');
 
+add_action('after_setup_theme', 'remove_admin_bar');
 
+function remove_admin_bar() {
+    show_admin_bar(false);
+}
 
 function remove_custom_fields() {
     if(defined('WP_DEBUG') && WP_DEBUG === false) {

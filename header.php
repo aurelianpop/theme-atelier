@@ -64,7 +64,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e('Skip to content', 'theme-atelier'); ?></a>
 
-    <header id="masthead" class="site-header" role="banner">
+    <header id="masthead" class="site-header" role="banner" style="position:fixed;z-index: 9999;width:100%;top:0">
         <nav id="site-navigation" class="main-navigation" role="navigation">
             <div class="nav-wrapper menu-container light-blue accent-4 valign">
 
@@ -84,7 +84,8 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                 <!-- Logout -->
                 <?php if (!is_user_logged_in()) { ?>
                     <div class="logon-container at-login right grey darken-3">
-                        <a class="waves-effect waves-light modal-trigger lock_open center-align white-link" href="#at-login-modal"><i
+                        <a class="waves-effect waves-light modal-trigger lock_open center-align white-link"
+                           href="#at-login-modal"><i
                                 class="large material-icons">account_circle</i></a>
                     </div>
                 <?php } else { ?>
@@ -117,12 +118,24 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
         </nav><!-- #site-navigation -->
 
         <!-- Mobile nav -->
-        <?php wp_nav_menu(array('menu_id' => 'mobile-demo', 'menu_class' => 'side-nav', 'theme_location' => 'primary', 'container' => false,  'items_wrap' => my_nav_wrap(), 'walker' => new Atelier_Walker())); ?>
+        <?php wp_nav_menu(array('menu_id' => 'mobile-demo', 'menu_class' => 'side-nav', 'theme_location' => 'primary', 'container' => false, 'items_wrap' => my_nav_wrap(), 'walker' => new Atelier_Walker())); ?>
 
         <!-- Submenu -->
         <?php if (is_user_logged_in()) { ?>
             <nav id="site-sub-navigation" class="grey darken-3 sub-menu-bar left" role="navigation">
                 <?php $user = wp_get_current_user();
+                if (in_array('administrator', $user->roles)) {
+                    ?>
+                    <div class="right">
+                        <ul id="partner-menu" class="menu">
+                            <li id="menu-item-51"
+                                class="menu-item menu-item-type-post_type menu-item-object-page page_item current_page_item waves-effect waves-light white-link">
+                            <a href="<?php echo get_admin_url() ?>">Panou de administrare</a>
+                            </li>
+                        </ul>
+                    </div><?php
+                }
+
                 if (in_array('partner', $user->roles)) {
                     wp_nav_menu(array('container_class' => 'right', 'theme_location' => 'partner', 'menu_id' => 'partner-menu', 'walker' => new Atelier_Walker()));
                 }
@@ -139,8 +152,8 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
         if (is_front_page()) {
             echo do_shortcode('[rev_slider home]');
         } else {
-            if(is_single()) {
-                $feature_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+            if (is_single()) {
+                $feature_image = wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>
                 <img src="<?php echo $feature_image ?>"/>
             <?php } else {
                 echo do_shortcode('[rev_slider pages-slider]');

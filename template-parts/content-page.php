@@ -52,7 +52,7 @@
                             ?>
                             <div class="col m4 s12">
                                 <div class="card">
-                                    <a href="<?php echo $cause->guid ?>">
+                                    <a class="blue-link" href="<?php echo $cause->guid ?>">
                                         <div class="card-image center valign-wrapper margin0">
                                             <?php echo !empty($img_url) ? '<img class="valign" src="' . $img_url . '"/>' : '' ?>
                                         </div>

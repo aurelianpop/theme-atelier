@@ -17,7 +17,10 @@ get_header(); ?>
 
 			get_template_part( 'template-parts/content', get_post_format() );
 
-			the_post_navigation();
+			the_post_navigation(array(
+				'prev_text'          => '<i class="fa fa-chevron-left"></i>&nbsp %title',
+				'next_text'          => '%title &nbsp<i class="fa fa-chevron-right"></i>',
+			));
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

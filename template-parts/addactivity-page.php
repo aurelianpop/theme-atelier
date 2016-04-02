@@ -107,13 +107,18 @@
                 <?php } ?>
             </ul>
             <div id="at-delete-news-modal" class="at-delete-news-modal modal">
-                <h3 class="center">Sunteti sigur ca vreti sa stergeti aceasta activitate ?</h3>
-                <div class="center">
-                    <a id="ta-delete-news" href="javascript:void(0)" class="modal-action modal-close waves-effect waves-light btn light-blue accent-4 " data-id="">Da</a>
-                    <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-light btn light-blue accent-4">Nu</a>
+                <div class="light-blue accent-4 modal-content white-text">Sterge activitate</div>
+                <div class="modal-content">
+                    <p>Sunteti sigur ca vreti sa stergeti aceasta activitate ?</p>
+                    <div class="modal-footer">
+                        <a id="ta-delete-news" href="javascript:void(0)"
+                           class="modal-action modal-close waves-effect waves-light btn light-blue accent-4 white-link"
+                           data-id="">Da</a>
+                        <a href="javascript:void(0)"
+                           class="modal-action modal-close waves-effect waves-light btn light-blue accent-4 white-link">Nu</a>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div><!-- .entry-content -->
 

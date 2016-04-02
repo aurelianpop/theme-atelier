@@ -7,7 +7,7 @@ $footer_dark_grey: #222222;
   margin: 0 !important;
 }
 
-.padding-right30{
+.padding-right30 {
   padding-right: 30px;
 }
 
@@ -27,38 +27,59 @@ $footer_dark_grey: #222222;
   padding-top: 60px;
 }
 
+.padding-bottom30 {
+  padding-bottom: 30px;
+}
+
 .padding-bottom60 {
   padding-bottom: 60px;
 }
 
+/*Display*/
 .inline-block {
   display: inline-block;
 }
 
-.align-bottom {
+.flex {
   display: flex;
+}
+
+.flex-align-bottom {
   align-items: flex-end;
 }
 
+.flex-vertical-center {
+  justify-content: space-between;
+  align-items: center
+}
+
 /*General font*/
-.font-weight700{
+.font18 {
+  font-size: 18px;
+}
+
+.font-weight700 {
   font-weight: 700
 }
 
-.font-weight800{
+.font-weight800 {
   font-weight: 800
 }
 
 /*General link*/
 .white-link {
-  &:focus,&:visited,&:active,&:hover {
+  &:focus, &:visited, &:active, &:hover {
     color: #fff;
   }
 }
 
 .blue-link {
-  &:focus,&:visited,&:active,&:hover {
+  &:focus, &:visited, &:active {
     color: #0091ea;
+  }
+
+  &:hover {
+    color: #01579b
   }
 }
 
@@ -204,18 +225,28 @@ body {
     width: 100px;
   }
 
+  .small-img {
+    max-width: 150px;
+    max-height: 80px;
+  }
+
+  .blue-border {
+    padding: 5px 5px 0 5px;
+    border: solid 1px $standard_blue;
+  }
+
   .input-file-preview {
     padding: 10px !important;
   }
 
   .input-field {
     /* label focus color */
-    input[type=text]:focus + label, textarea:focus + label {
+    input:focus + label, textarea:focus + label {
       color: $standard_blue !important;
     }
 
     /* label underline focus color */
-    input[type=text]:focus, input[type=password]:focus, textarea:focus {
+    input:focus, textarea:focus {
       border-bottom: 1px solid $standard_blue !important;
       box-shadow: 0 1px 0 0 $standard_blue !important;
     }
@@ -322,10 +353,10 @@ body {
         -ms-transform: rotate(356deg); /* IE 9 */
         -webkit-transform: rotate(356deg); /* Chrome, Safari, Opera */
         transform: rotate(356deg);
-        float:right;
+        float: right;
         margin-right: 5%;
         margin-top: -30px;
-        border:8px solid #fff;
+        border: 8px solid #fff;
       }
 
       .join-btn:hover {
@@ -428,10 +459,10 @@ body {
       }
     }
     p {
-      margin: 0 ;
+      margin: 0;
     }
     .at-parner-name {
-      margin-top: 0 ;
+      margin-top: 0;
       font-weight: 800;
     }
   }
@@ -442,7 +473,7 @@ body {
   }
 
   .toast {
-    &.large{
+    &.large {
       max-width: 300px;
       padding: 30px;
     }
@@ -496,7 +527,7 @@ body {
       .card-action {
         position: absolute;
         bottom: 0;
-        width:100%;
+        width: 100%;
       }
       .card-content {
         padding-bottom: 80px;
@@ -511,6 +542,48 @@ body {
           max-width: none;
           height: 100%;
         }
+      }
+    }
+  }
+
+  /*Post navigation*/
+  .post-navigation {
+    background-color: $standard_blue;
+
+    a {
+      &:focus, &:visited, &:active, &:hover {
+        color: #fff;
+      }
+    }
+
+    .nav-previous {
+      padding-left: 20px;
+    }
+
+    .nav-next {
+      padding-right: 20px;
+    }
+  }
+
+  /*Comments*/
+  .comment-list {
+    margin-left: 0;
+    padding-left: 0;
+
+    .comment {
+      padding: 10px;
+      border-top: 1px solid #cccccc;
+      border-right: 1px solid #cccccc;
+      border-left: 1px solid #cccccc;
+
+      &:last-child {
+        border-bottom: 1px solid #cccccc;
+      }
+    }
+
+    .comment-author {
+      cite {
+        font-style: normal;
       }
     }
   }
