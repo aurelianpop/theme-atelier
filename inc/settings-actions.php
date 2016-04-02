@@ -131,7 +131,7 @@ function save_news_action()
 
     if(!empty($img_array)) {
         $comma_separated = implode(",", $img_array);
-        $gallery = '<h2>Galerie Imagini</h2><br/>[gallery link="file" columns="4" size="large" ids="' . $comma_separated .  '"]';
+        $gallery = '<h2>Galerie Imagini</h2><br/>[gallery link="file" columns="4" size="medium" ids="' . $comma_separated .  '"]';
         $content = esc_textarea($_POST['post_content']) . $gallery ;
 
         $args = array(
