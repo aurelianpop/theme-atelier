@@ -506,7 +506,11 @@ body {
       }
     }
   }
-
+  .gallery {
+    img {
+      width: 100%;
+    }
+  }
   .top-single-post {
     height: 300px;
     overflow-y: hidden;
