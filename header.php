@@ -156,7 +156,12 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
                 $feature_image = wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>
                 <img src="<?php echo $feature_image ?>"/>
             <?php } else {
-                echo do_shortcode('[rev_slider pages-slider]');
+                if(is_page_template('contact-page.php')) { ?>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d17517.61433298314!2d23.606927613175568!3d46.776342833076335!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sro!2sro!4v1459601398393" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <?php } else {
+                    echo do_shortcode('[rev_slider pages-slider]');
+                }
+
             }
         } ?>
     </div>
