@@ -65,6 +65,12 @@
                         <label for="user_url">Website</label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12 m12">
+                        <textarea id="description" name="description" class="materialize-textarea"><?php echo $user->description; ?></textarea>
+                        <label for="description">Descriere Companie</label>
+                    </div>
+                </div>
                 <div class="row padding-top30 valign-wrapper">
                     <div class="ta-contact-person col s12 m7">
                         <h2>Persoana de contact</h2>

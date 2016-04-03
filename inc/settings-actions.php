@@ -26,6 +26,7 @@ function save_user_settings_action()
             'ID' => $user->ID,
             'first_name' => sanitize_text_field($_POST['first_name']),
             'user_url' => sanitize_text_field($_POST['user_url']),
+            'description' => esc_textarea($_POST['description']),
         );
 
         wp_update_user($args);

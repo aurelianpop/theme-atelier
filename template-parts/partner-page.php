@@ -43,6 +43,13 @@ $user = get_user_by('ID', $partner_id);
                             </span>
                         </div>
                     </div>
+                    <div class="col m12 s12" style="padding: 0;">
+                        <h5>Descrierea companiei:</h5>
+                        <hr class="blue accent-4">
+                        <p>
+                            <?php echo $user->description; ?>
+                        </p>
+                    </div>
                     <h5>Persoana de Contact:</h5>
                     <hr class="blue accent-4">
                     <div class="grey lighten-3" style="padding:10px;">

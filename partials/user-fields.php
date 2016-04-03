@@ -182,6 +182,16 @@
             </td>
         </tr>
         <tr class="ta-table-contact-name">
+            <th><label for="description">Description</label></th>
+
+            <td>
+                <textarea rows="4" name="description" cols="50"><?php echo is_object($user) ? esc_attr(get_the_author_meta('description', $user->ID)) : ''; ?>
+                </textarea>
+                <br/>
+                <span class="description">Please enter the company description.</span>
+            </td>
+        </tr>
+        <tr class="ta-table-contact-name">
             <th><label for="contact-name">Contact Name</label></th>
 
             <td>

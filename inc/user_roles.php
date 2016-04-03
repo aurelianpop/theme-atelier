@@ -70,6 +70,7 @@ function atelier_save_extra_profile_fields($user_id)
     update_user_meta($user_id, 'has_children', $_POST['has_children']);
     update_user_meta($user_id, 'married', $_POST['married']);
     update_user_meta($user_id, 'logo', $_POST['logo']);
+    update_user_meta($user_id, 'description', $_POST['description']);
     update_user_meta($user_id, 'contact_name', $_POST['contact_name']);
     update_user_meta($user_id, 'contact_surname', $_POST['contact_surname']);
     update_user_meta($user_id, 'contact_function', $_POST['contact_function']);
@@ -96,6 +97,7 @@ function atelier_add_user_columns($columns)
     $columns['married'] = __('Marital Status', 'theme');
 
     // Partners
+    $columns['description'] = __('Description', 'theme');
     $columns['contact_name'] = __('Contact Name', 'theme');
     $columns['contact_surname'] = __('Contact Surname', 'theme');
     $columns['contact_function'] = __('Contact Function', 'theme');
@@ -164,6 +166,10 @@ function atelier_show_user_data($value, $column_name, $user_id)
 
     if ('married' == $column_name) {
         return get_user_meta($user_id, 'married', true);
+    }
+
+    if ('description' == $column_name) {
+        return get_user_meta($user_id, 'description', true);
     }
 
     if ('contact_name' == $column_name) {
