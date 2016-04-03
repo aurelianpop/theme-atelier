@@ -47,7 +47,7 @@ $user = get_user_by('ID', $partner_id);
                         <h5>Descrierea companiei:</h5>
                         <hr class="blue accent-4">
                         <p>
-                            <?php echo $user->description; ?>
+                            <?php echo nl2br($user->description); ?>
                         </p>
                     </div>
                     <h5>Persoana de Contact:</h5>
@@ -57,7 +57,7 @@ $user = get_user_by('ID', $partner_id);
                             <tbody>
                             <tr>
                                 <td class="font-weight700">Nume:</td>
-                                <td style="width:100%"><?php echo $user->first_name; ?></td>
+                                <td style="width:100%"><?php echo $user->contact_name; ?></td>
                             </tr>
                             <tr>
                                 <td class="font-weight700">Prenume:</td>
@@ -133,7 +133,7 @@ $user = get_user_by('ID', $partner_id);
             </div>
             <div class="row">
                 <div class="col s12 m12">
-                    <h3>Acvitati sponsorizate de acest partener</h3>
+                    <h3>Activitati sponsorizate de acest partener</h3>
                     <hr class="blue accent-4"/>
                     <?php
                     $args = array(
