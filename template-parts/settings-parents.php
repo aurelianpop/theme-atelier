@@ -25,6 +25,7 @@
         <?php $user = wp_get_current_user(); ?>
         <div class="ta-settings padding-top10 padding-bottom60">
             <form id="at_save_settings" action="" method="post" enctype="multipart/form-data">
+                <!-- Profile data -->
                 <h2>Profil</h2>
                 <hr class="light-blue accent-4"/>
                 <div class="row">
@@ -43,7 +44,6 @@
                                class="validate">
                         <label for="cnp">CNP</label>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m4">
@@ -62,68 +62,86 @@
                         <label for="address">Adresa</label>
                     </div>
                 </div>
+                <!-- Details -->
+                <h2>Detalii</h2>
+                <hr class="light-blue accent-4"/>
                 <div class="row">
-                    <h2>Detalii</h2>
-                    <hr class="light-blue accent-4"/>
-                    <div class="row">
-                        <div class="input-field col s12 m4">
-                            <select name="help">
-                                <option <?php echo $user->help == 'financial' ? 'selected="selected"' : ''; ?> value="financial">Financiar
-                                </option>
-                                <option <?php echo $user->help == 'clothing' ? 'selected="selected"' : ''; ?> value="clothing">Haine
-                                </option>
-                                <option <?php echo $user->help == 'requisites' ? 'selected="selected"' : ''; ?> value="requisites">Rechizite
-                                </option>
-                                <option <?php echo $user->help == 'furniture' ? 'selected="selected"' : ''; ?> value="furniture">Mobila
-                                </option>
-                                <option <?php echo $user->help == 'other' ? 'selected="selected"' : ''; ?> value="other">Altul
-                                </option>
-                            </select>
-                            <label>Tip Ajutor</label>
-                        </div>
-                        <div class="input-field col s12 m4">
-                            <input id="job" name="job" type="text" value="<?php echo $user->job; ?>"
-                                   class="validate">
-                            <label for="job">Loc de munca</label>
-                        </div>
-                        <div class="input-field col s12 m4">
-                            <select name="has_children">
-                                <option <?php echo $user->has_children == '0' ? 'selected="selected"' : ''; ?> value="0">0</option>
-                                <option <?php echo $user->has_children == '1' ? 'selected="selected"' : ''; ?> value="1">1</option>
-                                <option <?php echo $user->has_children == '2' ? 'selected="selected"' : ''; ?> value="2">2</option>
-                                <option <?php echo $user->has_children == '3' ? 'selected="selected"' : ''; ?> value="3">3</option>
-                                <option <?php echo $user->has_children == '4' ? 'selected="selected"' : ''; ?> value="4">4</option>
-                            </select>
-                            <label>Copii</label>
-                        </div>
+                    <div class="input-field col s12 m4">
+                        <select name="help">
+                            <option <?php echo $user->help == 'financial' ? 'selected="selected"' : ''; ?>
+                                value="financial">Financiar
+                            </option>
+                            <option <?php echo $user->help == 'clothing' ? 'selected="selected"' : ''; ?>
+                                value="clothing">Haine
+                            </option>
+                            <option <?php echo $user->help == 'requisites' ? 'selected="selected"' : ''; ?>
+                                value="requisites">Rechizite
+                            </option>
+                            <option <?php echo $user->help == 'furniture' ? 'selected="selected"' : ''; ?>
+                                value="furniture">Mobila
+                            </option>
+                            <option <?php echo $user->help == 'other' ? 'selected="selected"' : ''; ?> value="other">
+                                Altul
+                            </option>
+                        </select>
+                        <label>Tip Ajutor</label>
                     </div>
-                    <h2>Tip Profil</h2>
-                    <hr class="light-blue accent-4"/>
-                    <div class="row">
-                        <div class="input-field col s12 m4">
-                            <input id="married-yes" class="with-gap" type="radio" <?php echo $user->married == '0' ? 'checked="checked"' : ''; ?> name="married" value="0">
-                            <label for="married-yes">Necasatorit</label>
-                            <input id="married-no" class="with-gap" type="radio" <?php echo $user->married == '1' ? 'checked="checked"' : ''; ?> name="married" value="1">
-                            <label for="married-no">Casatorit</label>
-                        </div>
+                    <div class="input-field col s12 m4">
+                        <input id="job" name="job" type="text" value="<?php echo $user->job; ?>"
+                               class="validate">
+                        <label for="job">Loc de munca</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12 m2">
-                            <input id="anonymus-yes" class="with-gap" type="radio" <?php echo $user->anonymus == '0' ? 'checked="checked"' : ''; ?> name="anonymus" value="0">
-                            <label for="anonymus-yes">Anonim</label>
-                            <input id="anonymus-no" class="with-gap" type="radio" <?php echo $user->anonymus == '1' ? 'checked="checked"' : ''; ?> name="anonymus" value="1">
-                            <label for="anonymus-no">Public</label>
-                        </div>
+                    <div class="input-field col s12 m4">
+                        <select name="has_children">
+                            <option <?php echo $user->has_children == '0' ? 'selected="selected"' : ''; ?> value="0">0
+                            </option>
+                            <option <?php echo $user->has_children == '1' ? 'selected="selected"' : ''; ?> value="1">1
+                            </option>
+                            <option <?php echo $user->has_children == '2' ? 'selected="selected"' : ''; ?> value="2">2
+                            </option>
+                            <option <?php echo $user->has_children == '3' ? 'selected="selected"' : ''; ?> value="3">3
+                            </option>
+                            <option <?php echo $user->has_children == '4' ? 'selected="selected"' : ''; ?> value="4">4
+                            </option>
+                        </select>
+                        <label>Copii</label>
                     </div>
-
                 </div>
-
+                <!-- Marital status -->
+                <div class="row">
+                    <div class="input-field col s12 m4">
+                        <h5>Stare civila:</h5>
+                        <input id="married-yes" class="with-gap"
+                               type="radio" <?php echo $user->married == '0' ? 'checked="checked"' : ''; ?>
+                               name="married" value="0">
+                        <label for="married-yes">Necasatorit</label>
+                        <input id="married-no" class="with-gap"
+                               type="radio" <?php echo $user->married == '1' ? 'checked="checked"' : ''; ?>
+                               name="married" value="1">
+                        <label for="married-no">Casatorit</label>
+                    </div>
+                </div>
+                <!-- Profile type -->
+                <div class="row">
+                    <div class="input-field col s12 m4">
+                        <h5>Tip Profil</h5>
+                        <input id="anonymus-yes" class="with-gap"
+                               type="radio" <?php echo $user->anonymus == '0' ? 'checked="checked"' : ''; ?>
+                               name="anonymus" value="0">
+                        <label for="anonymus-yes">Anonim</label>
+                        <input id="anonymus-no" class="with-gap"
+                               type="radio" <?php echo $user->anonymus == '1' ? 'checked="checked"' : ''; ?>
+                               name="anonymus" value="1">
+                        <label for="anonymus-no">Public</label>
+                    </div>
+                </div>
                 <input type='hidden' value="<?php echo wp_create_nonce('save_user_data'); ?>" name='nonce'/>
                 <input type="hidden" name="action" id="action" value="save_user_settings">
-                <button class="btn waves-effect waves-light  light-blue accent-4" type="submit">Actualizeaza
-                    <i class="material-icons right">send</i>
-                </button>
-
+                <div style="border-top:solid 1px #d0d0d0;margin-top:50px;">
+                    <button style="margin-top:20px;" class="btn waves-effect waves-light light-blue accent-4" type="submit">Actualizeaza
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
             </form>
             <div id="output"></div>
 

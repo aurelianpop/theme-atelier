@@ -53,12 +53,11 @@
                             <div class="col m4 s12">
                                 <div class="card">
                                     <a class="blue-link" href="<?php echo $cause->guid ?>">
-                                        <div class="card-image center valign-wrapper margin0">
-                                            <?php echo !empty($img_url) ? '<img class="valign" src="' . $img_url . '"/>' : '' ?>
+                                        <div style="height:240px; background-image:url('<?php echo $img_url;?>');background-size:cover">
                                         </div>
                                         <?php $date = strtotime($cause->post_modified); ?>
                                         <div class="card-content">
-                                            <p class="truncate"><?php echo $cause->post_title ?></p>
+                                            <p class="truncate"><?php echo $cause->post_title?></p>
                                             <p class="grey-text text-accent-3"><?php echo date($dateFormat, $date) ?> </p>
                                         </div>
                                     </a>
@@ -76,7 +75,7 @@
                     $args = array(
                         'posts_per_page' => 5,
                         'offset' => 0,
-                        'orderby' => 'modified',
+                        'orderby' => 'date',
                         'order' => 'DESC',
                         'post_type' => 'post',
                         'post_status' => 'publish',
@@ -87,7 +86,7 @@
                     <ul class="collection"><?php
                         foreach ($news_array as $news) {
                             $img_url = wp_get_attachment_url(get_post_thumbnail_id($news->ID));
-                            $date = strtotime($news->post_modified);
+                            $date = strtotime($news->post_date);
                             ?>
                             <li class="collection-item avatar">
                                 <a class="blue-link" href="<?php echo $news->guid ?>">

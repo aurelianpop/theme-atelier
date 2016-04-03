@@ -26,20 +26,23 @@
         <h2>Lista de copii</h2>
         <hr class="light-blue accent-4"/>
 
-        <div class="row">
+        <div class="row at-copii-list">
             <?php $user = wp_get_current_user();
             if(isset($user->children) && !empty($user->children)) {
                 foreach ($user->children as $child) {
                     $post = get_post($child);
                     ?>
                     <div class="col s12 m4">
-                        <div class="card">
-                            <div class="card-image">
-                                <?php $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
-                                <img src="<?php echo $feat_image ?>">
-                                <h4><?php echo $post->post_title; ?></h4>
+                        <div class="card" style="min-height: 585px;">
+                            <div class="card-image truncate">
+                                <?php $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                                if($feat_image ) { ?>
+                                    <img src="<?php echo $feat_image ?>">
+                                <?php } ?>
+<!--                                <h4 class="card-title grey">--><?php //echo $post->post_title; ?><!--</h4>-->
                             </div>
                             <div class="card-content">
+                                <h4> <a class="blue-link" href="<?php echo $post->guid;?>"><?php echo $post->post_title; ?></a></h4>
                                 <p>
                                     <?php echo substr($post->post_content, 0, 300); ?>
                                 </p>

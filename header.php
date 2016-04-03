@@ -123,7 +123,26 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') { ?>
         <!-- Submenu -->
         <?php if (is_user_logged_in()) { ?>
             <nav id="site-sub-navigation" class="grey darken-3 sub-menu-bar left" role="navigation">
-                <?php $user = wp_get_current_user();
+                <?php $user = wp_get_current_user();?>
+                <div id="at-user-welcome" class="left">
+                    <ul>
+                        <?php
+                        $partnerPages = get_pages(array(
+                            'number' => 1,
+                            'meta_key' => '_wp_page_template',
+                            'meta_value' => 'partner-page.php'
+                        ));
+                        reset($partnerPages);
+                        if (in_array('partner', $user->roles)) {
+                            $parnerUrl = get_permalink(current($partnerPages)->ID);?>
+                            <li><a class="white-link" href="<?php echo esc_url($parnerUrl) . '?partner=' . $user->ID;?>" style="font-style: italic">Hello, <?php echo $user->user_login;?>!</a></li>
+                        <?php }
+                        else { ?>
+                            <li style="font-style: italic">Hello, <?php echo $user->user_login;?> !</li>
+                        <?php } ?>
+                    </ul>
+                </div>
+                <?php
                 if (in_array('administrator', $user->roles)) {
                     ?>
                     <div class="right">

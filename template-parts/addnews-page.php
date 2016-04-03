@@ -12,6 +12,7 @@
 <article class="container" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">
         <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+        <hr class="blue accent-4"/>
     </header><!-- .entry-header -->
 
     <div class="entry-content">
@@ -58,6 +59,7 @@
         </div>
         <div class="at-pending-news padding-top60 padding-bottom60">
             <h2>Noutati care asteapta aprobare</h2>
+            <hr class="blue accent-4"/>
             <?php
             $user = wp_get_current_user();
             $args = array(
@@ -71,25 +73,26 @@
                 'suppress_filters' => true
             );
             $posts_array = get_posts($args);
-            ?>
-            <div class="padding-top30">
-                <ul class="at-pending-news-list collection">
-                    <?php foreach ($posts_array as $post) {
-                        $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
-                        ?>
-                        <li class="at-news-item-<?php echo $post->ID; ?> collection-item avatar">
-                            <img src="<?php echo $url; ?>" alt="" class="circle">
-                            <span class="title"><?php echo $post->post_title; ?></span>
-                            <p class="padding-right30">
-                                <?php echo substr($post->post_content, 0, 300); ?>
-                            </p>
-                            <a href="#at-delete-news-modal" data-id="<?php echo $post->ID; ?>"
-                               class="delete-item-modal modal-trigger lock_open secondary-content light-blue-text text-accent-4"><i
-                                    class="material-icons">delete</i></a>
-                        </li>
-                    <?php } ?>
-                </ul>
-            </div>
+            if(!empty($posts_array)){ ?>
+            <ul class="at-pending-news-list collection">
+                <?php foreach ($posts_array as $post) {
+                    $url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+                    ?>
+                    <li class="at-news-item-<?php echo $post->ID; ?> collection-item avatar">
+                        <img src="<?php echo $url; ?>" alt="" class="circle">
+                        <span class="title font-weight700"><?php echo $post->post_title; ?></span>
+                        <p class="padding-right30">
+                            <?php echo substr($post->post_content, 0, 300); ?>
+                        </p>
+                        <a href="#at-delete-news-modal" data-id="<?php echo $post->ID; ?>"
+                           class="delete-item-modal modal-trigger lock_open secondary-content light-blue-text text-accent-4"><i
+                                class="material-icons">delete</i></a>
+                    </li>
+                <?php } ?>
+            </ul>
+            <?php }
+            else { ?><p>Toate noutatile au fost aprobate.</p>
+            <?php } ?>
             <div id="at-delete-news-modal" class="at-delete-news-modal modal">
                 <div class="light-blue accent-4 modal-content white-text">Sterge stire</div>
                 <div class="modal-content">
