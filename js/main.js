@@ -88,11 +88,11 @@ jQuery(document).ready(function($) {
         url: ajax_front.ajaxurl,
         success: function(response){
             //TODO: put timeout here
-            Materialize.toast('Saved!', 4000, 'green accent-4');
+            Materialize.toast('Setarile au fost salvate!', 4000, 'green accent-4');
             $('#ta-partner-logo').attr('src', response);
         },
         error: function() {
-            Materialize.toast('Saved!', 4000, 'red accent-4');
+            Materialize.toast('Setarile nu au fost salvate!', 4000, 'red accent-4');
         }
     });
 
@@ -135,6 +135,9 @@ jQuery(document).ready(function($) {
         });
     });
 
+    /**
+     * Ajax send email to a partner
+     */
     $('#at_send_email_partner').ajaxForm({
         url: ajax_front.ajaxurl,
         success: function(response){
@@ -145,6 +148,20 @@ jQuery(document).ready(function($) {
             Materialize.toast('Mesajul nu a fost trimis!', 4000, 'large red accent-4');
         }
 
+    });
+
+    /**
+     * Ajax send email to admins for a new child enqury
+     */
+    $('#at_send_email_admin').ajaxForm({
+        url: ajax_front.ajaxurl,
+        success: function(response){
+            //TODO: put timeout here
+            Materialize.toast('Mesajul a fost trimis!', 4000, 'large green accent-4');
+        },
+        error: function() {
+            Materialize.toast('Mesajul nu a fost trimis!', 4000, 'large red accent-4');
+        }
     });
 
 });

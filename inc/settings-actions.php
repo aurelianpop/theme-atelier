@@ -194,6 +194,9 @@ function delete_post_action()
 add_action('wp_ajax_send_partner_email', 'send_partner_email_action');
 add_action('wp_ajax_nopriv_send_partner_email', 'send_partner_email_action');
 
+/**
+ * Send email to a partner
+ */
 function send_partner_email_action () {
 
     // check the nonce so we know the data is comming from where we want it
@@ -207,6 +210,114 @@ function send_partner_email_action () {
     $message = $_POST['first_name'] . " " . $_POST['last_name'] . "\r\n\r\n"  . $_POST['partner_email'];
 
     $response = wp_mail($_POST['partner_email'], $subject, $message, $headers);
+
+    if($response === false) {
+        echo "false";
+        wp_send_json_error();
+    }
+
+    die();
+}
+
+
+add_action('wp_ajax_request_child', 'request_child_action');
+add_action('wp_ajax_nopriv_request_child', 'request_child_action');
+
+/**
+ * Send email to a the admin of the site, search for appropriate children
+ */
+function request_child_action () {
+
+    // check the nonce so we know the data is comming from where we want it
+    check_ajax_referer('child_request', $_POST['nonce'], false);
+
+    if($_POST['gender'] == 1) {
+        $gender = "Feminin";
+    } else {
+        $gender = "Masculin";
+    }
+
+    if($_POST['married'] == 1) {
+        $marital = "Nu";
+    } else {
+        $marital = "Da";
+    }
+
+    switch ($_POST['age']) {
+        case '7':
+            $min = 0;
+            $max = 7;
+        break;
+        case '14':
+            $min = 8;
+            $max = 14;
+        break;
+        case '18':
+            $min = 15;
+            $max = 18;
+        break;
+        case 'max':
+            $min = 19;
+            $max = 100;
+        break;
+    }
+
+    $args = array(
+        'numberposts'      => -1,
+        'orderby'          => 'rand',
+        'post_type'        => 'atelier_children',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'atelier_hobbies',
+                'field' => 'term_id',
+                'terms' => sanitize_text_field($_POST['hobbies']),
+            )
+        ),
+        'post_status'      => 'publish',
+        'suppress_filters' => true
+    );
+    $posts_array = get_posts( $args );
+
+    $children = '<p>';
+    foreach($posts_array as $key => $post) {
+        $sex = get_field('sex', $post->ID);
+        $dob = get_field('date_of_birth', $post->ID);
+
+        $year = date("Y", strtotime($dob));
+        $today = date("Y");
+
+        $diff = $today - $year;
+
+        if($sex === $gender && $diff <= $max && $diff >= $min) {
+            $cnp = get_field('cnp', $post->ID);
+            $children .= '<strong>' . $post->post_title . '</strong>, CNP: ' . $cnp . ', Sex: ' . $sex . ', Nascut: ' . $dob . "<br/>";
+        }
+
+        $children .= '</p>';
+    }
+
+    $to     = get_option( 'admin_email' );
+    $subject  = 'Cerere Sponsorizare Copil';
+    $headers  = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=".get_bloginfo('charset')."" . "\r\n";
+    $headers .= "From: <".$_POST['email'].">" . "\r\n";
+
+    $message = '<h1>Detalii Cerere</h1>';
+    $message .= '<p><span>Nume: '. sanitize_text_field($_POST['first_name']) .'</span>';
+    $message .= '<span>Prenume: '. sanitize_text_field($_POST['last_name']) .'</span></p>';
+    $message .= '<p><span>Email: '. $_POST['email'] .'</span></p>';
+    $message .= '<p><span>Telefon: '. $_POST['phone'] .'</span></p>';
+    $message .= '<p><span>Adresa: '. $_POST['adress'] .'</span></p>';
+    $message .= '<p><span>Loc de munca: '. $_POST['work_place'] .'</span></p>';
+    $message .= '<p><span>Casatorit: '. $marital .'</span></p>';
+    $message .= '<p><span>Numar Copii: '. $_POST['has_children'] .'</span></p>';
+    $message .= '<h2>Copii care se potrivesc cererii</h2>';
+    $message .= $children;
+    $message .= '<p><span>Tip ajutor oferit: '. $_POST['help'] .'</span></p>';
+
+    add_filter('wp_mail_content_type',create_function('', 'return "text/html"; '));
+
+    $response = wp_mail($to, $subject, $message, $headers);
 
     if($response === false) {
         echo "false";

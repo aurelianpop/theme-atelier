@@ -83,13 +83,13 @@
                             <hr class="blue accent-4">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <select>
-                                        <option value="1">0 - 7 ani</option>
-                                        <option value="2">7 - 14 ani</option>
-                                        <option value="3">14 - 18 ani</option>
-                                        <option value="4">18+ ani</option>
+                                    <select id="age" name="age">
+                                        <option value="7">0 - 7 ani</option>
+                                        <option value="14">7 - 14 ani</option>
+                                        <option value="18">14 - 18 ani</option>
+                                        <option value="max">18+ ani</option>
                                     </select>
-                                    <label>Varsta</label>
+                                    <label for="age">Varsta</label>
                                 </div>
                                 <div class="input-field col s12">
                                     <input id="gender-m" class="with-gap" type="radio" checked="checked" name="gender" value="0">
@@ -98,7 +98,26 @@
                                     <label for="gender-f">Fata</label>
                                 </div>
                             </div>
-                            <?php $categories = get_terms( 'atelier_hobbies', 'orderby=count&hide_empty=0' );   ?>
+                            <?php $categories = get_terms( 'atelier_hobbies', 'orderby=count&hide_empty=0' ); ?>
+                            <div class="row">
+                                <div class="input-field col s12 m12">
+                                    <select id="hobbies" name="hobbies">
+                                        <?php foreach($categories as $category) { ?>
+                                            <option value="<?php echo $category->term_id ?>"><?php echo $category->name ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <label for="hobbies">Hobby-uri</label>
+                                </div>
+                                <div class="input-field col s12 m12">
+                                    <select id="hobbies" name="help">
+                                        <option value="Financiar">Financiar</option>
+                                        <option value="Haine">Haine</option>
+                                        <option value="Rechizite">Rechizite</option>
+                                        <option value="Mobila">Mobila</option>
+                                    </select>
+                                    <label for="hobbies">Tip Ajutor</label>
+                                </div>
+                            </div>
                             <input type='hidden' value="<?php echo wp_create_nonce('child_request'); ?>"
                                    name='nonce'/>
                             <input type="hidden" name="action" id="action" value="request_child">
