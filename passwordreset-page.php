@@ -153,7 +153,7 @@ if (!$user_ID) { //block logged in users
     } else {
         get_header(); ?>
         <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
-        <div id="main-content" class="main-content">
+        <div id="main-content" class="main-content container">
 
             <div id="contentwrapper">
                 <div id="content" class="site-content" role="main">
@@ -165,16 +165,16 @@ if (!$user_ID) { //block logged in users
                                     <?php the_content(); ?>
                                     <form class="user_form" id="wp_pass_reset" action="" method="post">
                                         <h1>Resetare Parola</h1>
-                                        <div class="input-field">
-                                            <input id="user-or-email" type="text" class="text" name="user_input" value=""/>
-                                            <label for="user-or-email">User sau E-mail</label>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6">
+                                                <input id="user-or-email" type="text" class="text" name="user_input" value=""/>
+                                                <label for="user-or-email">User sau E-mail</label>
+                                            </div>
                                         </div>
-                                            <br/>
                                         <input type="hidden" name="action" value="tg_pwd_reset"/>
                                         <input type="hidden" name="tg_pwd_nonce"
                                                value="<?php echo wp_create_nonce("tg_pwd_nonce"); ?>"/>
-                                        <input type="submit" id="submitbtn" class="reset_password" name="submit"
-                                               value="Reset Password"/>
+                                        <button type="submit" name="submit" id="submitbtn" class="btn reset_password white-text light-blue accent-4" tabindex="100">Reseteaza Parola</button>
                                         <div id="result"></div>
                                     </form>
                                     <!-- To hold validation results -->
@@ -200,7 +200,7 @@ if (!$user_ID) { //block logged in users
 
                             <?php else : ?>
 
-                            <h2><?php _e('Not Found'); ?></h1>
+                            <h1><?php _e('Not Found'); ?></h1>
 
                                 <?php endif; ?>
                         </article>
