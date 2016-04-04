@@ -21,7 +21,7 @@
                     if ( is_single() ) {
                         the_title( '<h1 class="entry-title truncate">', '</h1>' );
                     } else {
-                        the_title( '<h2 class="entry-title truncate"><a class="blue-link" href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+                        the_title( '<h4 class="entry-title truncate"><a class="blue-link" href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' );
                     }
 
                     if ( 'post' === get_post_type() || 'atelier_activities' === get_post_type() ) : ?>

@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-content">
                     <?php
-                    the_title('<h2 class="entry-title truncate"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+                    the_title('<h4 class="entry-title truncate"><a class="blue-link" href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h4>');
                     if ('post' === get_post_type() || 'atelier_activities' === get_post_type()) : ?>
                         <div class="entry-meta">
                             <?php theme_atelier_posted_on(); ?>
@@ -27,11 +27,8 @@
                         <?php
                     endif; ?>
                     <?php
-                    the_content(sprintf(
-                    /* translators: %s: Name of current post. */
-                        wp_kses(__('Continue reading %s <span class="meta-nav">&rarr;</span>', 'theme-atelier'), array('span' => array('class' => array()))),
-                        the_title('<span class="screen-reader-text">"', '"</span>', false)
-                    )); ?>
+                        the_excerpt();
+                    ?>
                     <footer class="entry-footer">
                         <?php theme_atelier_entry_footer(); ?>
                     </footer><!-- .entry-footer -->

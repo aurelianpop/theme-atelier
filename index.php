@@ -26,7 +26,13 @@ get_header(); ?>
 				</header>
 			<div class="row">
 				<?php
-				endif;
+			endif;
+			if ( is_home() ) { ?>
+				<header class="entry-header">
+					<h1 class="entry-title"><?php echo apply_filters('the_title',get_page( get_option('page_for_posts') )->post_title); ?></h1>
+				</header>
+			<?php }
+
 
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
