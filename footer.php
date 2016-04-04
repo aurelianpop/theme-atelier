@@ -55,13 +55,13 @@
             <?php
             $partners = get_users('role=Partner');
             $partner_logos = array();
-            $partnerPages = get_pages(array(
-                'number' => 1,
-                'meta_key' => '_wp_page_template',
-                'meta_value' => 'partner-page.php',
-            ));
-            reset($partnerPages);
-            $parnerUrl = get_permalink(current($partnerPages)->ID) . '?partner=';
+//            $partnerPages = get_pages(array(
+//                'number' => 1,
+//                'meta_key' => '_wp_page_template',
+//                'meta_value' => 'partner-page.php',
+//            ));
+//            reset($partnerPages);
+//            $parnerUrl = get_permalink(current($partnerPages)->ID) . '?partner=';
             foreach ($partners as $partner) {
                 if ($partner->logo) {
                     $partner_logos[] = $partner;
@@ -70,7 +70,10 @@
             if (count($partner_logos) > 4) {
                 $partner_keys = array_rand($partner_logos, 4);
                 foreach ($partner_keys as $key) { ?>
-
+                    <div class="col s12 m3 center-align valign"><a
+                            href="<?php echo $parnerUrl . $partner_logos[$key]->ID; ?>"><img class="partner-logo"
+                                                                                             src="<?php echo $partner_logos[$key]->logo; ?>"/></a>
+                    </div>
                 <? }
             } else {
                 if ($partner_logos) {
