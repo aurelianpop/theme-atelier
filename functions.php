@@ -287,5 +287,9 @@ function at_metabox_menu_posttype_archive() {
     endif;
 }
 
-
+/**
+ * Custom image size
+ */
+add_theme_support( 'post-thumbnails' );
+add_image_size( 'gallery-thumb', 350, 350, array( 'center', 'center' )  );
 

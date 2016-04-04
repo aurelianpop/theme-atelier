@@ -741,3 +741,13 @@ body {
     }
   }
 }
+
+/* Gallery for activities */
+.entry-content {
+  .gallery {
+    div.gallery-icon a img {
+      padding: 8px;
+      border: solid 1px $standard_blue;
+    }
+  }
+}
