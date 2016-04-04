@@ -70,12 +70,14 @@
             if (count($partner_logos) > 4) {
                 $partner_keys = array_rand($partner_logos, 4);
                 foreach ($partner_keys as $key) {
-                    echo '<div class="col s12 m3 center-align valign"><a href=""><img class="partner-logo" src="' . $partner_logos[$key]->logo . '"/></a></div>';
+                    $url = $parnerUrl . $partner_logos[$key]->ID;
+                    echo '<div class="col s12 m3 center-align valign"><a href="'. $url .'"><img class="partner-logo" src="' . $partner_logos[$key]->logo . '"/></a></div>';
                 }
             } else {
                 if ($partner_logos) {
                     foreach ($partner_logos as $partner) {
-                        echo '<div class="col s12 m3 center-align valign"><a href=""><img class="partner-logo" src="' . $partner->logo . '"/></a></div>';
+                        $url = $parnerUrl . $partner->ID;
+                        echo '<div class="col s12 m3 center-align valign"><a href="' . $url . '"><img class="partner-logo" src="' . $partner->logo . '"/></a></div>';
                     }
                 }
             }
