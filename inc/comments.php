@@ -73,8 +73,12 @@ function comments_callback($comment, $args, $depth) {
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
     <div id="comment-<?php comment_ID(); ?>">
         <div class="comment-author vcard">
-
-            <?php printf(__('<cite class="fn">%s</cite> <span class="says">spune:</span>'), get_comment_author_link()) ?>
+            <?php
+                $username = get_comment_author_link();
+                $user = get_user_by('login', get_comment_author_link());
+                isset($user->anonymus) && $user->anonymus == 0 ? $username = 'Anonim' : $usernamer =  $username;
+            ?>
+            <cite class="fn"><?php echo $username ?></cite> <span class="says">spune:</span>
         </div>
         <?php if ($comment->comment_approved == '0') : ?>
             <em><?php _e('Comentariul dvs. asteapta moderare.') ?></em>
