@@ -147,7 +147,7 @@ function save_news_action()
 
     $result ='<li class="at-news-item-' . $post_id . ' collection-item avatar">';
     $result .= '<img src="'. $image_attributes[0] .'" alt="" class="circle">';
-    $result .= '<span class="title">'. $_POST['post_title'] .'</span>';
+    $result .= '<span class="title font-weight700">'. $_POST['post_title'] .'</span>';
     $result .= '<p>';
     $result .= substr($_POST['post_content'], 0, 300);
     $result .= '</p>';
