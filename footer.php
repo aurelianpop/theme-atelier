@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="footer-partners black-text padding-top30">
-        <h4 class="center-align"><span class="font-weight700">Partenerii</span> nostri</h4>
+        <h4 class="center-align"><span class="font-weight700">Membri </span> ai Retelei</h4>
         <div class="container row valign-wrapper">
             <?php
             $partners = get_users('role=Partner');
