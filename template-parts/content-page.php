@@ -93,7 +93,8 @@
                                     <?php echo !empty($img_url) ? '<img class="circle" src="' . $img_url . '"/>' : '' ?>
                                     <h6 class="title truncate"><?php echo $news->post_title ?></h6>
                                     <p class="grey-text text-accent-4"><?php echo date($dateFormat, $date) ?></p>
-                                    <p class="truncate padding-top30"><?php echo $news->post_content ?></p>
+                                    <?php $content = preg_replace('/<iframe.*?\/iframe>/i','', $news->post_content); ?>
+                                    <p class="truncate padding-top30"><?php echo $content ?></p>
                                 </a>
                             </li>
                             <?php
