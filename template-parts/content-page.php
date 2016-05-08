@@ -94,6 +94,7 @@
                                     <h6 class="title truncate"><?php echo $news->post_title ?></h6>
                                     <p class="grey-text text-accent-4"><?php echo date($dateFormat, $date) ?></p>
                                     <?php $content = preg_replace('/<iframe.*?\/iframe>/i','', $news->post_content); ?>
+                                    <?php var_dump(substr ( $content , 0, 30 ));?>
                                     <p class="truncate padding-top30"><?php echo substr ( $content , 0, 20 );  ?></p>
                                 </a>
                             </li>
