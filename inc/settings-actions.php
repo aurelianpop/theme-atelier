@@ -296,7 +296,7 @@ function request_child_action () {
         $children .= '</p>';
     }
 
-    $to     = get_option( 'admin_email' );
+    $to     = 'pop.ruxandra@maltez.ro';
     $subject  = 'Cerere Sponsorizare Copil';
     $headers  = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type: text/html; charset=".get_bloginfo('charset')."" . "\r\n";

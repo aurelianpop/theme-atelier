@@ -36,7 +36,7 @@
         <div class="container row">
             <div class="inline-block col s7">
                 <h4>Afla mai multe despre noi.<span class="font-weight700"> Inscrie-te la newsletter</span></h4>
-                <p>Lorem ipsum sit amet</p>
+                <p>Prin newsletter-ul nostru puteti primi informatii legate de actiunile, cauzele si partenerii nostri</p>
                 <a href="#at-subscribe-modal"
                    class="btn waves-effect waves-light grey darken-3 join-btn modal-trigger lock_open white-link">Abonare</a>
             </div>
@@ -61,24 +61,12 @@
                 'meta_value' => 'partner-page.php'
             ));
             reset($partnerPages);
-            $parnerUrl = get_permalink(current($partnerPages)->ID) . '?partner=';
+            $partnerUrl = get_permalink(current($partnerPages)->ID) . '?partner=';
+            $partner_keys = shuffle($partners);
             foreach ($partners as $partner) {
                 if ($partner->logo) {
-                    $partner_logos[] = $partner;
-                }
-            }
-            if (count($partner_logos) > 4) {
-                $partner_keys = array_rand($partner_logos, 4);
-                foreach ($partner_keys as $key) {
-                    $url = $parnerUrl . $partner_logos[$key]->ID;
-                    echo '<div class="col s12 m3 center-align valign"><a href="'. $url .'"><img class="partner-logo" src="' . $partner_logos[$key]->logo . '"/></a></div>';
-                }
-            } else {
-                if ($partner_logos) {
-                    foreach ($partner_logos as $partner) {
-                        $url = $parnerUrl . $partner->ID;
-                        echo '<div class="col s12 m3 center-align valign"><a href="' . $url . '"><img class="partner-logo" src="' . $partner->logo . '"/></a></div>';
-                    }
+                    $url = $partnerUrl . $partner->ID;
+                    echo '<div class="col s12 m3 center-align valign"><a href="'. $url .'"><img class="partner-logo" src="' . $partner->logo . '"/></a></div>';
                 }
             }
             ?>

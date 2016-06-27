@@ -125,12 +125,19 @@ function theme_atelier_scripts()
 
     wp_register_style('custom_wp_materialize_css', get_template_directory_uri() . '/css/styles.css', false, '1.0.0');
     wp_enqueue_style('custom_wp_materialize_css');
+    wp_register_style('custom_wp_owl_carousel_css', get_template_directory_uri() . '/owl-slider/owl.carousel.css', false, '1.0.0');
+    wp_enqueue_style('custom_wp_owl_carousel_css');
+    wp_register_style('custom_wp_owl_theme_css', get_template_directory_uri() . '/owl-slider/owl.theme.css', false, '1.0.0');
+    wp_enqueue_style('custom_wp_owl_theme_css');
+    wp_register_style('custom_wp_owl_transitions_css', get_template_directory_uri() . '/owl-slider/owl.transitions.css', false, '1.0.0');
+    wp_enqueue_style('custom_wp_owl_transitions_css');
 
     // add main js
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-form', array('jquery'), false, true);
     //Colorbox jQuery plugin js file
     wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/colorbox/jquery.colorbox-min.js', array( 'jquery'   ), '', true );
+    wp_enqueue_script( 'own-slider', get_template_directory_uri() . '/owl-slider/owl.carousel.min.js', array( 'jquery'   ), '', true );
     wp_enqueue_script('theme-atelier-js', get_template_directory_uri() . '/js/dist/ta-main' . $js_suffix, array('jquery'), '1.0.0', true);
     wp_localize_script('theme-atelier-js', 'ajax_front', array('ajaxurl' => admin_url('admin-ajax.php')));
 

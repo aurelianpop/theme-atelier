@@ -133,7 +133,7 @@ $user = get_user_by('ID', $partner_id);
             </div>
             <div class="row">
                 <div class="col s12 m12">
-                    <h3>Activitati sponsorizate de acest partener</h3>
+                    <h3>Implicare in Retea si/sau in comunitate a acestui partener</h3>
                     <hr class="blue accent-4"/>
                     <?php
                     $args = array(
