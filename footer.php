@@ -51,7 +51,7 @@
     </div>
     <div class="footer-partners black-text padding-top30">
         <h4 class="center-align"><span class="font-weight700">Membri </span> ai Retelei</h4>
-        <div class="container row valign-wrapper">
+        <div class="container row valign-wrapper owl-carousel" id="ta-carousel">
             <?php
             $partners = get_users('role=Partner');
             $partner_logos = array();
@@ -66,7 +66,7 @@
             foreach ($partners as $partner) {
                 if ($partner->logo) {
                     $url = $partnerUrl . $partner->ID;
-                    echo '<div class="col s12 m3 center-align valign"><a href="'. $url .'"><img class="partner-logo" src="' . $partner->logo . '"/></a></div>';
+                    echo '<div class="col s12 m12 center-align valign"><a href="'. $url .'"><img class="partner-logo" src="' . $partner->logo . '"/></a></div>';
                 }
             }
             ?>
